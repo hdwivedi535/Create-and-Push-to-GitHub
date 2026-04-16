@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Zap, LogOut, Plus, Pencil, Trash2, Upload, Search, X, Package, Tag } from "lucide-react";
 
-const API = const API = "https://himprash-backend.onrender.com/api";
+const API = "https://himprash-backend.onrender.com/api";
 
 function formatINR(n) { return new Intl.NumberFormat("en-IN").format(n); }
 
