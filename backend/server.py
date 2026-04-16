@@ -137,7 +137,7 @@ SEED_PRODUCTS = [
         "id": "prod-009",
         "name": "16S 48V Smart BMS",
         "price": 1499.00,
-        "category": "BMS",
+        "category": "Battery Management System (BMS)",
         "description": "16-cell series smart Battery Management System for 48V packs. Balancing current 68mA per cell. Over-charge, over-discharge, short circuit, and temperature protection. UART communication port for diagnostics.",
         "compatibility": "48V Li-ion Battery (16S Config)",
         "image": "https://images.unsplash.com/photo-1687858477272-0c5f4a401250?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTF8MHwxfHNlYXJjaHwxfHxlbGVjdHJpYyUyMHZlaGljbGUlMjBjb250cm9sbGVyJTIwUENCJTIwY2lyY3VpdCUyMGJvYXJkfGVufDB8fHx8MTc3NjM1MDU5M3ww&ixlib=rb-4.1.0&q=85",
@@ -148,7 +148,7 @@ SEED_PRODUCTS = [
         "id": "prod-010",
         "name": "20S 60V BMS with Bluetooth",
         "price": 2999.00,
-        "category": "BMS",
+        "category": "Battery Management System (BMS)",
         "description": "Advanced 20S BMS for 60V battery packs with Bluetooth monitoring. Real-time cell voltage tracking via mobile app. 100A continuous discharge current. Temperature sensors included.",
         "compatibility": "60V Li-ion Battery (20S Config)",
         "image": "https://images.unsplash.com/photo-1600080726065-cc806a0ef302?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTJ8MHwxfHNlYXJjaHwxfHx3aXJpbmclMjBoYXJuZXNzJTIwZWxlY3RyaWNhbCUyMGNhYmxlJTIwY29ubmVjdG9yfGVufDB8fHx8MTc3NjM1MDYwNXww&ixlib=rb-4.1.0&q=85",
@@ -183,8 +183,8 @@ SEED_PRODUCTS = [
 @app.on_event("startup")
 async def seed_products():
     # Check if data needs refresh by looking for a known 2W EV product
-    existing = await db.products.find_one({"id": "prod-001"}, {"_id": 0, "category": 1, "name": 1})
-    needs_reseed = existing is None or existing.get("category") != "Battery" or existing.get("name") != "48V 30Ah Lithium Battery Pack"
+    existing = await db.products.find_one({"id": "prod-009"}, {"_id": 0, "category": 1})
+    needs_reseed = existing is None or existing.get("category") != "Battery Management System (BMS)"
     if needs_reseed:
         await db.products.drop()
         await db.products.insert_many(SEED_PRODUCTS)

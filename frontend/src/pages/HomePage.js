@@ -15,7 +15,7 @@ const CATEGORY_ICONS = {
   Motor: Settings,
   Controller: Cpu,
   Charger: BatteryCharging,
-  BMS: CircuitBoard,
+  "Battery Management System (BMS)": CircuitBoard,
   Wiring: Cable,
 };
 
