@@ -1,44 +1,48 @@
-# HimPrash - Smart EV Accessories Platform
+# HimPrash - EV Two-Wheeler Parts Platform
 
 ## Problem Statement
-Build a modern, responsive full-stack web application called "HimPrash" - a Smart 2W EV Accessories Platform for the Indian market.
+Build a modern, responsive EV two-wheeler parts marketplace for the Indian market.
 
 ## Architecture
 - **Frontend**: React + Tailwind CSS + Shadcn UI (port 3000)
 - **Backend**: FastAPI + MongoDB (port 8001)
-- **Database**: MongoDB (products collection with 12 seed items)
 - **Design**: Dark premium theme (#0E1117 bg, #0A84FF primary, #00FF9D accent)
 
 ## What's Been Implemented (April 2026)
 ### Phase 1 - MVP
-- [x] Backend API with product CRUD and filtering
-- [x] 12 products seeded (2W EV accessories only)
-- [x] Homepage with hero, perks, bento grid featured products
-- [x] Product listing with category + price range filters
+- [x] 12 EV parts products (Battery, Motor, Controller, Charger, BMS, Wiring)
+- [x] Homepage: Hero, Search bar, Category quick access, Featured products
+- [x] Product listing with sidebar filters + search by name + category dropdown
 - [x] Product detail with INR pricing, compatibility, Add to Cart toast
 
 ### Phase 1.1 - Refinements
-- [x] Changed all prices to INR (₹) with Indian number formatting
-- [x] Replaced car accessories with 2W EV accessories only
-- [x] Updated categories: Charging, Safety, Mounts, Storage, Tech Accessories
-- [x] Reduced pure black usage, improved contrast (bg: #0E1117, cards: #161B22)
-- [x] Brighter product images, less dark hero section
-- [x] Improved product card UI (rounded corners, hover glow, green ₹ symbol)
-- [x] Indian market perks (ISI Certified, Pan-India Delivery, Rider Support)
-- [x] Updated hero with urban scooter scene
+- [x] INR currency with ₹ symbol
+- [x] Changed to "EV Two-Wheeler Parts" branding
+- [x] Improved UI contrast, lighter backgrounds
+
+### Phase 1.2 - Current (Search + UX)
+- [x] Search functionality (backend regex search + frontend input)
+- [x] Category dropdown in search bar
+- [x] Category quick access buttons on homepage (BMS, Battery, Charger, Controller, Motor, Wiring)
+- [x] Contact number +91 8707259761 in navbar + footer
+- [x] Active page highlighting in navbar
+- [x] New bright hero image (electric scooter)
+- [x] Products changed to actual EV parts (batteries, motors, controllers, chargers, BMS, wiring)
+- [x] Footer with customer support contact info
+- [x] Price range up to ₹25,000
 
 ## Prioritized Backlog
 ### P0 - Phase 2
 - Cart system with state management
 - User authentication
-- Checkout flow with Razorpay integration
+- Razorpay checkout
 
 ### P1
-- Product search, sort by price/name
-- Product reviews and ratings
-- Wishlist
+- Sort by price/name/popularity
+- Product reviews/ratings
+- Wishlist, Recently viewed
 
 ### P2
 - Admin dashboard for product CRUD
 - Order management
-- User profiles
+- Inventory tracking
