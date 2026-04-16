@@ -1,0 +1,106 @@
+{
+  "theme": "dark",
+  "archetype": "5 (Jewel & Luxury) + 4 (Swiss & High-Contrast)",
+  "concept": "Premium Automotive Tech - Minimal, precise, and high-performance. Inspired by modern EV interfaces.",
+  "colors": {
+    "background": "#0B0B0B",
+    "surface": "#111315",
+    "surface_elevated": "#1A1D21",
+    "primary": "#0A84FF",
+    "primary_hover": "#339DFF",
+    "accent": "#00FF9D",
+    "accent_bg": "rgba(0, 255, 157, 0.1)",
+    "border": "#1E2328",
+    "text_primary": "#F5F5F7",
+    "text_secondary": "#A1A1AA",
+    "text_muted": "#71717A"
+  },
+  "typography": {
+    "heading_font": "Outfit",
+    "body_font": "Inter",
+    "rules": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl tracking-tighter font-medium text-[#F5F5F7]",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl tracking-tight font-medium text-[#F5F5F7]",
+      "h3": "text-xl sm:text-2xl tracking-tight font-medium text-[#F5F5F7]",
+      "body": "text-base leading-relaxed text-[#A1A1AA]",
+      "labels": "text-xs uppercase tracking-[0.2em] font-bold text-[#0A84FF]"
+    }
+  },
+  "spacing_and_layout": {
+    "container": "max-w-7xl mx-auto px-6 md:px-12",
+    "section_padding": "py-24 md:py-32",
+    "grid_gap": "gap-8",
+    "radius": "rounded-none md:rounded-sm",
+    "border_style": "border border-[#1E2328]"
+  },
+  "surfaces": {
+    "header": "backdrop-blur-xl bg-[#0B0B0B]/80 border-b border-[#1E2328] sticky top-0 z-50 transition-all",
+    "card": "bg-[#111315] border border-[#1E2328] transition-all duration-300 hover:border-[#339DFF]/50 hover:-translate-y-1",
+    "badge": "bg-[#00FF9D]/10 text-[#00FF9D] border border-[#00FF9D]/20 px-3 py-1 text-xs uppercase tracking-widest font-medium"
+  },
+  "components": {
+    "button_primary": "bg-[#0A84FF] text-white hover:bg-[#339DFF] px-8 py-4 font-medium flex items-center justify-center transition-colors duration-200",
+    "button_secondary": "bg-transparent text-[#F5F5F7] border border-[#1E2328] hover:bg-[#1A1D21] px-8 py-4 font-medium transition-colors duration-200",
+    "input": "bg-[#0B0B0B] border border-[#1E2328] text-[#F5F5F7] focus:border-[#0A84FF] focus:ring-1 focus:ring-[#0A84FF] transition-all"
+  },
+  "pages": {
+    "homepage": {
+      "hero": "80vh min-height. Use 'hero_image' as background. OVERLAY: bg-gradient-to-r from-[#0B0B0B] via-[#0B0B0B]/80 to-transparent. Content left-aligned. Massive H1.",
+      "featured_grid": "Bento Grid Layout: 1 large dominant product (col-span-full md:col-span-8), 2 smaller products (col-span-4)."
+    },
+    "product_listing": {
+      "layout": "CSS Grid layout. Sidebar filters (col-span-1) on the left. Product grid (col-span-3) on the right.",
+      "filters": "Categories (Checkbox group), Price Range (Slider component from Shadcn).",
+      "card_ui": "Product image container with #0B0B0B bg, padding. Below image: Title, price, availability badge."
+    },
+    "product_detail": {
+      "layout": "2 Columns desktop (grid-cols-2). Left: Sticky product image with #111315 bg. Right: Scrolling content.",
+      "content": "Title, Price, Compatibility Pill, Description paragraph. Massive 'Add to Cart' primary button."
+    }
+  },
+  "media": {
+    "hero_image": {
+      "url": "https://static.prod-images.emergentagent.com/jobs/62773f05-d118-4c48-9ad3-b551fc41c456/images/0e711f7f36f04431cf20dc4af208ae9ad0c88ad4ad1a2ca0c8fa3e76dabd4620.png",
+      "alt": "Premium EV interior at night"
+    },
+    "products": [
+      {
+        "id": "p1",
+        "name": "Wall Charger Pro",
+        "category": "Charging",
+        "price": 450,
+        "compatibility": "Universal EV",
+        "description": "Smart home charging station with glowing LED indicator ring. Wi-Fi enabled for remote scheduling and monitoring.",
+        "url": "https://static.prod-images.emergentagent.com/jobs/62773f05-d118-4c48-9ad3-b551fc41c456/images/eff8afc652fce44eaf6315f05bd27ef720c5ed50a7b47b63f3f8abd897d6e592.png"
+      },
+      {
+        "id": "p2",
+        "name": "Carbon Fiber Trunk Spoiler",
+        "category": "Exterior",
+        "price": 299,
+        "compatibility": "Model 3 / Model Y",
+        "description": "Matte finish real carbon fiber spoiler. Enhances aerodynamics and provides a premium aggressive look.",
+        "url": "https://static.prod-images.emergentagent.com/jobs/62773f05-d118-4c48-9ad3-b551fc41c456/images/61db0a1838014a416e1e040e298b653358c46639aaa3fbf782b46da7fd8991f1.png"
+      },
+      {
+        "id": "p3",
+        "name": "Center Console Organizer",
+        "category": "Interior",
+        "price": 35,
+        "compatibility": "Model 3 / Model Y",
+        "description": "Minimalist matte black flocked tray to organize your essentials. Seamlessly integrates with the factory console.",
+        "url": "https://static.prod-images.emergentagent.com/jobs/62773f05-d118-4c48-9ad3-b551fc41c456/images/b9db011face2810059e3eccebed576341bf38c5b2c6ec0daad743ff92dac38cc.png"
+      }
+    ]
+  },
+  "testing": {
+    "attributes": "All interactive elements MUST have data-testid attributes (e.g., data-testid='nav-home', data-testid='add-to-cart-btn', data-testid='filter-price-slider')"
+  },
+  "instructions_to_main_agent": [
+    "Load Google Fonts: 'Outfit' for headings and 'Inter' for body.",
+    "Use standard HTML/Tailwind for layout composition, avoiding Shadcn generic layout wrappers. Use Shadcn ONLY for interactive logic (Sliders, Checkboxes, Dialogs).",
+    "Never use pure #000000 or #FFFFFF for large areas. Stick strictly to the defined color palette.",
+    "Use Lucide React for iconography. Maintain 1.5px stroke width for a premium technical look.",
+    "Hover states must be explicit. Use group-hover for card child elements."
+  ]
+}
