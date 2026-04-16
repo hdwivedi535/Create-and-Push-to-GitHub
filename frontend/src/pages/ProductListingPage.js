@@ -21,16 +21,18 @@ export default function ProductListingPage() {
   const [loading, setLoading] = useState(true);
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
 
-  // Read URL params on mount
-  useEffect(() => {
-    const urlSearch = searchParams.get("search") || "";
-    const urlCategory = searchParams.get("category") || "";
-    setSearchQuery(urlSearch);
-    if (urlCategory) {
-      setSelectedCategories([urlCategory]);
-      setDropdownCategory(urlCategory);
-    }
-  }, []);
+  /// Read URL params on mount
+useEffect(() => {
+  const urlSearch = searchParams.get("search") || "";
+  const urlCategory = searchParams.get("category") || "";
+
+  setSearchQuery(urlSearch);
+
+  if (urlCategory) {
+    setSelectedCategories([urlCategory]);
+    setDropdownCategory(urlCategory);
+  }
+}, [searchParams]); // 
 
   // Fetch categories
   useEffect(() => {
