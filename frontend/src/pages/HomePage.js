@@ -1,67 +1,97 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import HeroSection from "@/components/HeroSection";
+import SearchBar from "@/components/SearchBar";
 import ProductCard from "@/components/ProductCard";
 import { Link } from "react-router-dom";
-import { ArrowRight, ShieldCheck, Truck, Headphones } from "lucide-react";
+import { ArrowRight, Battery, Cpu, Settings, BatteryCharging, CircuitBoard, Cable } from "lucide-react";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
+const CATEGORY_ICONS = {
+  Battery: Battery,
+  Motor: Settings,
+  Controller: Cpu,
+  Charger: BatteryCharging,
+  BMS: CircuitBoard,
+  Wiring: Cable,
+};
+
 export default function HomePage() {
   const [featured, setFeatured] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchFeatured = async () => {
+    const fetchData = async () => {
       try {
-        const res = await axios.get(`${API}/products?featured=true`);
-        setFeatured(res.data);
+        const [productsRes, catsRes] = await Promise.all([
+          axios.get(`${API}/products?featured=true`),
+          axios.get(`${API}/categories`),
+        ]);
+        setFeatured(productsRes.data);
+        setCategories(catsRes.data);
       } catch (err) {
-        console.error("Failed to fetch featured products:", err);
+        console.error("Failed to fetch data:", err);
       } finally {
         setLoading(false);
       }
     };
-    fetchFeatured();
+    fetchData();
   }, []);
 
-  const perks = [
-    { icon: ShieldCheck, title: "ISI Certified", desc: "All safety gear meets Indian standards" },
-    { icon: Truck, title: "Pan-India Delivery", desc: "Free shipping on orders above \u20B9999" },
-    { icon: Headphones, title: "Rider Support", desc: "EV specialists ready to help you choose" },
-  ];
+  const handleSearch = (query) => {
+    navigate(`/products?search=${encodeURIComponent(query)}`);
+  };
+
+  const handleCategorySelect = (cat) => {
+    if (cat) {
+      navigate(`/products?category=${encodeURIComponent(cat)}`);
+    } else {
+      navigate("/products");
+    }
+  };
 
   return (
     <div data-testid="home-page">
       <HeroSection />
 
-      {/* Perks Section */}
-      <section className="border-y border-[#1F2937] bg-[#131820]">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 py-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {perks.map((perk, i) => (
-              <div key={i} className="flex items-start gap-4">
-                <div className="w-10 h-10 bg-[#0A84FF]/10 rounded-md flex items-center justify-center flex-shrink-0">
-                  <perk.icon className="w-5 h-5 text-[#0A84FF]" strokeWidth={1.5} />
-                </div>
-                <div>
-                  <h4 className="text-sm font-medium text-[#E8E8ED] mb-1" style={{ fontFamily: 'Outfit, sans-serif' }}>
-                    {perk.title}
-                  </h4>
-                  <p className="text-xs text-[#6B6B78]">{perk.desc}</p>
-                </div>
-              </div>
-            ))}
+      {/* Search bar */}
+      <SearchBar onSearch={handleSearch} onCategorySelect={handleCategorySelect} />
+
+      {/* Category Quick Access */}
+      <section data-testid="category-quick-access" className="bg-[#0E1117] py-10 md:py-14">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <p className="text-xs uppercase tracking-[0.2em] font-bold text-[#0A84FF] mb-5 text-center">
+            Browse by Category
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {categories.map((cat) => {
+              const Icon = CATEGORY_ICONS[cat] || Settings;
+              return (
+                <Link
+                  key={cat}
+                  to={`/products?category=${encodeURIComponent(cat)}`}
+                  data-testid={`category-btn-${cat.toLowerCase()}`}
+                  className="flex items-center gap-2 bg-[#161B22] border border-[#1F2937] text-[#A0A0AB] hover:text-white hover:border-[#0A84FF]/50 hover:bg-[#1A2030] px-5 py-2.5 rounded-md text-sm font-medium transition-all duration-200"
+                >
+                  <Icon className="w-4 h-4" strokeWidth={1.5} />
+                  {cat}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* Featured Products */}
-      <section data-testid="featured-section" className="py-24 md:py-32">
+      <section data-testid="featured-section" className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           {/* Section header */}
-          <div className="flex items-end justify-between mb-12">
+          <div className="flex items-end justify-between mb-10">
             <div>
               <p className="text-xs uppercase tracking-[0.2em] font-bold text-[#0A84FF] mb-3">
                 Featured
@@ -70,7 +100,7 @@ export default function HomePage() {
                 className="text-2xl sm:text-3xl lg:text-4xl tracking-tight font-medium text-[#E8E8ED]"
                 style={{ fontFamily: 'Outfit, sans-serif' }}
               >
-                Top Picks for Your EV
+                Top EV Parts
               </h2>
             </div>
             <Link
@@ -83,52 +113,28 @@ export default function HomePage() {
             </Link>
           </div>
 
-          {/* Product Grid - Bento Layout */}
+          {/* Product Grid */}
           {loading ? (
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-              {[...Array(3)].map((_, i) => (
-                <div
-                  key={i}
-                  className={`bg-[#161B22] border border-[#1F2937] rounded-lg animate-pulse ${
-                    i === 0 ? 'md:col-span-8 h-72 md:h-96' : 'md:col-span-4 h-64'
-                  }`}
-                />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[...Array(6)].map((_, i) => (
+                <div key={i} className="bg-[#161B22] border border-[#1F2937] h-80 rounded-lg animate-pulse" />
               ))}
             </div>
           ) : (
-            <>
-              {/* Bento grid: first item large, rest normal */}
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-6 mb-6">
-                {featured.slice(0, 1).map((product, i) => (
-                  <div key={product.id} className="md:col-span-8">
-                    <ProductCard product={product} index={i} large />
-                  </div>
-                ))}
-                <div className="md:col-span-4 flex flex-col gap-6">
-                  {featured.slice(1, 3).map((product, i) => (
-                    <ProductCard key={product.id} product={product} index={i + 1} />
-                  ))}
-                </div>
-              </div>
-
-              {/* Rest of featured */}
-              {featured.length > 3 && (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {featured.slice(3).map((product, i) => (
-                    <ProductCard key={product.id} product={product} index={i + 3} />
-                  ))}
-                </div>
-              )}
-            </>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {featured.map((product, i) => (
+                <ProductCard key={product.id} product={product} index={i} />
+              ))}
+            </div>
           )}
 
           {/* Mobile view all */}
-          <div className="mt-10 md:hidden text-center">
+          <div className="mt-8 md:hidden text-center">
             <Link
               to="/products"
               className="inline-flex items-center gap-2 text-sm text-[#0A84FF] hover:text-[#339DFF] transition-colors font-medium"
             >
-              View all products
+              View all parts
               <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
             </Link>
           </div>

@@ -36,7 +36,7 @@ export default function ProductDetailPage() {
     setAddedToCart(true);
     toast.success(`${product.name} added to cart`, {
       description: "Cart functionality coming soon!",
-      duration: 3000,
+      duration: 2500,
     });
     setTimeout(() => setAddedToCart(false), 2000);
   };

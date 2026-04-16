@@ -77,7 +77,7 @@ export default function FilterSidebar({
             {categories.map((cat) => (
               <label
                 key={cat}
-                data-testid={`filter-category-${cat.toLowerCase().replace(/\s+/g, '-')}`}
+                data-testid={`filter-category-${cat.toLowerCase()}`}
                 className="flex items-center gap-3 cursor-pointer group"
               >
                 <Checkbox
@@ -103,7 +103,7 @@ export default function FilterSidebar({
               data-testid="filter-price-slider"
               min={0}
               max={maxPrice}
-              step={100}
+              step={500}
               value={priceRange}
               onValueChange={onPriceChange}
               className="mb-4 [&_[role=slider]]:bg-[#0A84FF] [&_[role=slider]]:border-[#0A84FF] [&_[data-orientation=horizontal]>[data-orientation=horizontal]]:bg-[#0A84FF]"

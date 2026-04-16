@@ -47,133 +47,133 @@ class ProductResponse(BaseModel):
 SEED_PRODUCTS = [
     {
         "id": "prod-001",
-        "name": "Smart Home EV Charger",
-        "price": 4999.00,
-        "category": "Charging",
-        "description": "Intelligent wall-mounted charging station for your electric two-wheeler. Wi-Fi enabled with app-based scheduling and monitoring. Compatible with Ola S1, Ather 450X, TVS iQube and more. Auto cut-off and surge protection built in.",
-        "compatibility": "Ola S1 / Ather 450X / TVS iQube / Bajaj Chetak",
-        "image": "https://static.prod-images.emergentagent.com/jobs/62773f05-d118-4c48-9ad3-b551fc41c456/images/eff8afc652fce44eaf6315f05bd27ef720c5ed50a7b47b63f3f8abd897d6e592.png",
+        "name": "48V 30Ah Lithium Battery Pack",
+        "price": 18999.00,
+        "category": "Battery",
+        "description": "High-capacity 48V 30Ah lithium-ion battery pack for electric scooters. Samsung/LG cells with 1500+ charge cycles. Includes smart BMS for overcharge protection. Lightweight design at 8.5 kg with carrying handle.",
+        "compatibility": "Universal 48V 2W EV / E-Rickshaw",
+        "image": "https://images.unsplash.com/photo-1732030373864-d37573915751?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODl8MHwxfHNlYXJjaHwxfHxlbGVjdHJpYyUyMHZlaGljbGUlMjBiYXR0ZXJ5JTIwbGl0aGl1bSUyMGlvbiUyMHBhY2t8ZW58MHx8fHwxNzc2MzUwNTkzfDA&ixlib=rb-4.1.0&q=85",
         "in_stock": True,
         "featured": True
     },
     {
         "id": "prod-002",
-        "name": "Portable Charging Cable",
-        "price": 1299.00,
-        "category": "Charging",
-        "description": "Compact 3-meter portable charging cable with Indian 3-pin plug. Carry it anywhere for emergency charging. LED indicator shows charging status. Durable PVC jacket with IP54 splash resistance.",
-        "compatibility": "Universal 2W EV (Standard Indian Socket)",
-        "image": "https://images.unsplash.com/photo-1732347211970-530dd1a81e58?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MTJ8MHwxfHNlYXJjaHwxfHxFViUyMHR3byUyMHdoZWVsZXIlMjBjaGFyZ2VyJTIwcG9ydGFibGUlMjBjaGFyZ2luZ3xlbnwwfHx8fDE3NzYzNDkxOTV8MA&ixlib=rb-4.1.0&q=85",
+        "name": "60V 20Ah LFP Battery",
+        "price": 24999.00,
+        "category": "Battery",
+        "description": "Premium 60V 20Ah LiFePO4 battery with 3000+ cycle life. Superior thermal stability for Indian summers. IP67 waterproof casing. Built-in Bluetooth for battery health monitoring via app.",
+        "compatibility": "60V E-Scooters / Ola S1 / Ather 450X",
+        "image": "https://images.unsplash.com/photo-1767990495521-95cceb571125?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODl8MHwxfHNlYXJjaHwzfHxlbGVjdHJpYyUyMHZlaGljbGUlMjBiYXR0ZXJ5JTIwbGl0aGl1bSUyMGlvbiUyMHBhY2t8ZW58MHx8fHwxNzc2MzUwNTkzfDA&ixlib=rb-4.1.0&q=85",
         "in_stock": True,
         "featured": True
     },
     {
         "id": "prod-003",
-        "name": "Smart Riding Helmet",
-        "price": 3499.00,
-        "category": "Safety",
-        "description": "ISI certified full-face helmet with integrated Bluetooth for calls and music. Built-in LED tail indicators for night visibility. Anti-fog visor with UV protection. Lightweight at just 1.2 kg.",
-        "compatibility": "Universal Fit (M / L / XL)",
-        "image": "https://images.unsplash.com/photo-1684920312489-039c3bee531b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzd8MHwxfHNlYXJjaHw0fHxlbGVjdHJpYyUyMHNjb290ZXIlMjBhY2Nlc3NvcmllcyUyMGhlbG1ldCUyMG1vdW50fGVufDB8fHx8MTc3NjM0OTE5NXww&ixlib=rb-4.1.0&q=85",
+        "name": "1000W BLDC Hub Motor",
+        "price": 6499.00,
+        "category": "Motor",
+        "description": "High-torque 1000W brushless DC hub motor for electric scooters. 48V/60V compatible with hall sensor. Peak efficiency 92%. Silent operation with sealed bearings. Direct drive, no gears to maintain.",
+        "compatibility": "48V-60V Systems / 10-inch Wheel",
+        "image": "https://images.unsplash.com/photo-1556977735-25a8c50734f7?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjd8MHwxfHNlYXJjaHwxfHxlbGVjdHJpYyUyMG1vdG9yJTIwQkxEQyUyMGh1YiUyMHdoZWVsJTIwbW90b3J8ZW58MHx8fHwxNzc2MzUwNTkzfDA&ixlib=rb-4.1.0&q=85",
         "in_stock": True,
         "featured": True
     },
     {
         "id": "prod-004",
-        "name": "Reflective Riding Jacket",
-        "price": 899.00,
-        "category": "Safety",
-        "description": "High-visibility reflective riding jacket for safe night commutes. 3M Scotchlite reflective strips on front, back and arms. Breathable mesh lining for Indian summers. CE-certified shoulder and elbow armor pockets.",
-        "compatibility": "Unisex (S / M / L / XL / XXL)",
-        "image": "https://images.unsplash.com/photo-1720211463641-772900a07771?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxNzV8MHwxfHNlYXJjaHwzfHxyZWZsZWN0aXZlJTIwc2FmZXR5JTIwdmVzdCUyMGphY2tldCUyMHJpZGluZyUyMG5lb258ZW58MHx8fHwxNzc2MzQ5MjgwfDA&ixlib=rb-4.1.0&q=85",
+        "name": "350W Geared Hub Motor",
+        "price": 3999.00,
+        "category": "Motor",
+        "description": "Compact 350W geared hub motor ideal for city commute e-scooters. High torque at low speed for hill climbing. Integrated planetary gear reduction. Lightweight at just 3.2 kg.",
+        "compatibility": "36V-48V Systems / 8-inch Wheel",
+        "image": "https://images.unsplash.com/photo-1697091058503-7046e420dd98?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MDZ8MHwxfHNlYXJjaHwzfHxlbGVjdHJpYyUyMHNjb290ZXIlMjBFViUyMGJyaWdodCUyMGNsZWFuJTIwcHJvZHVjdHxlbnwwfHx8fDE3NzYzNTA2MDV8MA&ixlib=rb-4.1.0&q=85",
         "in_stock": True,
         "featured": False
     },
     {
         "id": "prod-005",
-        "name": "LED Helmet Light Kit",
-        "price": 699.00,
-        "category": "Safety",
-        "description": "Rechargeable USB LED light strip that attaches to any helmet. 3 modes: solid, blink, and flow. 500mAh battery lasts up to 8 hours. Weatherproof IP65 rating for monsoon riding.",
-        "compatibility": "Universal (All Helmets)",
-        "image": "https://images.unsplash.com/photo-1515850730971-68bc28d981d6?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNTl8MHwxfHNlYXJjaHwyfHxlbGVjdHJpYyUyMGNhciUyMGV4dGVyaW9yJTIwYWNjZXNzb3JpZXMlMjBMRUR8ZW58MHx8fHwxNzc2MzQ4MTU5fDA&ixlib=rb-4.1.0&q=85",
-        "in_stock": True,
-        "featured": False
-    },
-    {
-        "id": "prod-006",
-        "name": "Phone Mount Pro",
-        "price": 599.00,
-        "category": "Mounts",
-        "description": "CNC aluminum alloy handlebar phone mount with anti-vibration dampener. 360-degree rotation with secure clamp lock. Fits phones 4.7 to 7.2 inches. Designed to withstand Indian road vibrations.",
-        "compatibility": "Universal Handlebar (22mm-32mm)",
-        "image": "https://images.unsplash.com/photo-1583409461426-20d5d4f7a66e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjV8MHwxfHNlYXJjaHwxfHxzY29vdGVyJTIwcGhvbmUlMjBtb3VudCUyMEdQUyUyMHRyYWNrZXIlMjBnYWRnZXR8ZW58MHx8fHwxNzc2MzQ5MTk1fDA&ixlib=rb-4.1.0&q=85",
+        "name": "48V 30A Sine Wave Controller",
+        "price": 2499.00,
+        "category": "Controller",
+        "description": "Programmable 48V 30A sine wave motor controller. Smooth, silent operation with regenerative braking support. LCD display compatible. Over-current, over-voltage, and thermal protection built in.",
+        "compatibility": "48V BLDC Motors (Up to 1000W)",
+        "image": "https://images.unsplash.com/photo-1769148023257-02df7ec903be?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTF8MHwxfHNlYXJjaHwyfHxlbGVjdHJpYyUyMHZlaGljbGUlMjBjb250cm9sbGVyJTIwUENCJTIwY2lyY3VpdCUyMGJvYXJkfGVufDB8fHx8MTc3NjM1MDU5M3ww&ixlib=rb-4.1.0&q=85",
         "in_stock": True,
         "featured": True
     },
     {
-        "id": "prod-007",
-        "name": "Handlebar Mirror Set",
-        "price": 449.00,
-        "category": "Mounts",
-        "description": "Premium anti-vibration convex bar-end mirrors. CNC machined aluminum body with 360-degree adjustable ball joint. Wide-angle view reduces blind spots. Sleek minimal design.",
-        "compatibility": "Universal 2W EV (7/8 inch bars)",
-        "image": "https://images.unsplash.com/photo-1752403854633-ef9bfea057fa?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjV8MHwxfHNlYXJjaHwzfHxzY29vdGVyJTIwcGhvbmUlMjBtb3VudCUyMEdQUyUyMHRyYWNrZXIlMjBnYWRnZXR8ZW58MHx8fHwxNzc2MzQ5MTk1fDA&ixlib=rb-4.1.0&q=85",
+        "id": "prod-006",
+        "name": "60V 45A FOC Controller",
+        "price": 4999.00,
+        "category": "Controller",
+        "description": "Advanced Field Oriented Control (FOC) controller for 60V systems. Ultra-smooth acceleration and braking. Bluetooth programmable via mobile app. Supports regenerative braking and cruise control.",
+        "compatibility": "60V BLDC/PMSM Motors (Up to 2000W)",
+        "image": "https://images.unsplash.com/photo-1558171813-8e717211582b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTF8MHwxfHNlYXJjaHwzfHxlbGVjdHJpYyUyMHZlaGljbGUlMjBjb250cm9sbGVyJTIwUENCJTIwY2lyY3VpdCUyMGJvYXJkfGVufDB8fHx8MTc3NjM1MDU5M3ww&ixlib=rb-4.1.0&q=85",
         "in_stock": True,
         "featured": False
     },
     {
+        "id": "prod-007",
+        "name": "48V 5A Smart Charger",
+        "price": 1999.00,
+        "category": "Charger",
+        "description": "Intelligent 48V 5A lithium battery charger with auto cut-off. CC-CV charging curve for maximum battery life. LED status indicator and cooling fan. Indian 3-pin plug with 1.5m cable.",
+        "compatibility": "48V Li-ion / LiFePO4 Batteries",
+        "image": "https://images.unsplash.com/photo-1751592981628-957a88e13849?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDN8MHwxfHNlYXJjaHwxfHxFViUyMGNoYXJnZXIlMjBhZGFwdGVyJTIwcGx1ZyUyMGRldmljZSUyMHByb2R1Y3R8ZW58MHx8fHwxNzc2MzUwNjA1fDA&ixlib=rb-4.1.0&q=85",
+        "in_stock": True,
+        "featured": True
+    },
+    {
         "id": "prod-008",
-        "name": "Waterproof Phone Pouch",
-        "price": 349.00,
-        "category": "Mounts",
-        "description": "IPX8 rated waterproof phone pouch with handlebar mount. Touchscreen compatible transparent window. Secure zip-lock closure. Internal card and key pocket. Essential for monsoon rides.",
-        "compatibility": "Universal (Up to 7 inch phones)",
-        "image": "https://images.unsplash.com/photo-1681771960707-c14a9df34f6f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHwxfHxiaWtlJTIwc2VhdCUyMHN0b3JhZ2UlMjBiYWclMjBvcmdhbml6ZXJ8ZW58MHx8fHwxNzc2MzQ5MjgwfDA&ixlib=rb-4.1.0&q=85",
+        "name": "60V 3A Portable Charger",
+        "price": 2499.00,
+        "category": "Charger",
+        "description": "Compact 60V 3A portable charger for on-the-go charging. Universal AC input (100-240V). Lightweight aluminum body with active cooling. Short circuit and reverse polarity protection.",
+        "compatibility": "60V Li-ion / LiFePO4 Batteries",
+        "image": "https://images.unsplash.com/photo-1751592773554-81440afeb00a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDN8MHwxfHNlYXJjaHwyfHxFViUyMGNoYXJnZXIlMjBhZGFwdGVyJTIwcGx1ZyUyMGRldmljZSUyMHByb2R1Y3R8ZW58MHx8fHwxNzc2MzUwNjA1fDA&ixlib=rb-4.1.0&q=85",
         "in_stock": True,
         "featured": False
     },
     {
         "id": "prod-009",
-        "name": "Rear Top Box 30L",
-        "price": 2499.00,
-        "category": "Storage",
-        "description": "Hard-shell 30L top box with universal mounting plate. Matte black finish with reflective strips. Holds 2 helmets or groceries securely. Quick-release lock mechanism with 2 keys included.",
-        "compatibility": "Universal 2W (Mounting plate included)",
-        "image": "https://images.unsplash.com/photo-1751924382514-13926ee09a03?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NTJ8MHwxfHNlYXJjaHwzfHxtb3RvcmN5Y2xlJTIwdG9wJTIwY2FzZSUyMHN0b3JhZ2UlMjBib3glMjB0YWlsfGVufDB8fHx8MTc3NjM0OTE5NXww&ixlib=rb-4.1.0&q=85",
+        "name": "16S 48V Smart BMS",
+        "price": 1499.00,
+        "category": "BMS",
+        "description": "16-cell series smart Battery Management System for 48V packs. Balancing current 68mA per cell. Over-charge, over-discharge, short circuit, and temperature protection. UART communication port for diagnostics.",
+        "compatibility": "48V Li-ion Battery (16S Config)",
+        "image": "https://images.unsplash.com/photo-1687858477272-0c5f4a401250?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTF8MHwxfHNlYXJjaHwxfHxlbGVjdHJpYyUyMHZlaGljbGUlMjBjb250cm9sbGVyJTIwUENCJTIwY2lyY3VpdCUyMGJvYXJkfGVufDB8fHx8MTc3NjM1MDU5M3ww&ixlib=rb-4.1.0&q=85",
         "in_stock": True,
         "featured": True
     },
     {
         "id": "prod-010",
-        "name": "Under-Seat Storage Tray",
-        "price": 799.00,
-        "category": "Storage",
-        "description": "Custom-fit under-seat organizer tray with compartments. Anti-rattle felt lining keeps items secure. Stores charger cable, toolkit, and essentials. Easy snap-fit installation.",
-        "compatibility": "Ola S1 Pro / Ather 450X",
-        "image": "https://images.unsplash.com/photo-1681771960756-820f62ea1ccc?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHwyfHxiaWtlJTIwc2VhdCUyMHN0b3JhZ2UlMjBiYWclMjBvcmdhbml6ZXJ8ZW58MHx8fHwxNzc2MzQ5MjgwfDA&ixlib=rb-4.1.0&q=85",
+        "name": "20S 60V BMS with Bluetooth",
+        "price": 2999.00,
+        "category": "BMS",
+        "description": "Advanced 20S BMS for 60V battery packs with Bluetooth monitoring. Real-time cell voltage tracking via mobile app. 100A continuous discharge current. Temperature sensors included.",
+        "compatibility": "60V Li-ion Battery (20S Config)",
+        "image": "https://images.unsplash.com/photo-1600080726065-cc806a0ef302?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTJ8MHwxfHNlYXJjaHwxfHx3aXJpbmclMjBoYXJuZXNzJTIwZWxlY3RyaWNhbCUyMGNhYmxlJTIwY29ubmVjdG9yfGVufDB8fHx8MTc3NjM1MDYwNXww&ixlib=rb-4.1.0&q=85",
         "in_stock": True,
         "featured": False
     },
     {
         "id": "prod-011",
-        "name": "GPS Tracker",
-        "price": 1999.00,
-        "category": "Tech Accessories",
-        "description": "Real-time GPS tracking device with companion mobile app. Geo-fencing alerts, trip history, and anti-theft alarm. SIM-based with 1 year free data plan. Compact design hides easily under seat.",
-        "compatibility": "Universal 2W EV (12V/48V/72V)",
-        "image": "https://images.unsplash.com/photo-1597661172655-534e51b87937?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjV8MHwxfHNlYXJjaHw0fHxzY29vdGVyJTIwcGhvbmUlMjBtb3VudCUyMEdQUyUyMHRyYWNrZXIlMjBnYWRnZXR8ZW58MHx8fHwxNzc2MzQ5MTk1fDA&ixlib=rb-4.1.0&q=85",
+        "name": "Complete Wiring Harness Kit",
+        "price": 899.00,
+        "category": "Wiring",
+        "description": "Plug-and-play wiring harness kit for 2W EV builds. Color-coded wires with pre-crimped connectors. Includes throttle, brake, and display cables. Flame-retardant PVC insulation.",
+        "compatibility": "Universal 48V/60V EV Builds",
+        "image": "https://images.unsplash.com/photo-1584809923235-fabdba83d1df?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTJ8MHwxfHNlYXJjaHwyfHx3aXJpbmclMjBoYXJuZXNzJTIwZWxlY3RyaWNhbCUyMGNhYmxlJTIwY29ubmVjdG9yfGVufDB8fHx8MTc3NjM1MDYwNXww&ixlib=rb-4.1.0&q=85",
         "in_stock": True,
-        "featured": True
+        "featured": False
     },
     {
         "id": "prod-012",
-        "name": "USB Charging Hub",
-        "price": 599.00,
-        "category": "Tech Accessories",
-        "description": "Dual USB-A + USB-C fast charging hub for your scooter. QC 3.0 supported for rapid phone charging on the go. Waterproof cap protects ports from rain. Easy handlebar clamp installation.",
-        "compatibility": "Universal 2W (12V-72V Input)",
-        "image": "https://images.unsplash.com/photo-1581104678033-ce6e95d27f67?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTF8MHwxfHNlYXJjaHwzfHxVU0IlMjBjaGFyZ2VyJTIwcG9ydGFibGUlMjBwb3dlciUyMGJhbmslMjBkZXZpY2UlMjBwcm9kdWN0fGVufDB8fHx8MTc3NjM0OTIyMHww&ixlib=rb-4.1.0&q=85",
+        "name": "Anderson Connector Set (10 pairs)",
+        "price": 499.00,
+        "category": "Wiring",
+        "description": "10-pair Anderson PowerPole PP45 connector set. 45A rated for high-current EV applications. Color-coded red and black housing. Gold-plated contacts for low resistance. Easy tool-free assembly.",
+        "compatibility": "Universal EV / Solar / Battery Systems",
+        "image": "https://images.unsplash.com/photo-1594165520975-89edce5a8f64?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDN8MHwxfHNlYXJjaHwzfHxFViUyMGNoYXJnZXIlMjBhZGFwdGVyJTIwcGx1ZyUyMGRldmljZSUyMHByb2R1Y3R8ZW58MHx8fHwxNzc2MzUwNjA1fDA&ixlib=rb-4.1.0&q=85",
         "in_stock": False,
         "featured": False
     }
@@ -183,8 +183,8 @@ SEED_PRODUCTS = [
 @app.on_event("startup")
 async def seed_products():
     # Check if data needs refresh by looking for a known 2W EV product
-    existing = await db.products.find_one({"id": "prod-001"}, {"_id": 0, "category": 1})
-    needs_reseed = existing is None or existing.get("category") != "Charging" or (await db.products.find_one({"id": "prod-001"}, {"_id": 0, "price": 1})).get("price") != 4999.00
+    existing = await db.products.find_one({"id": "prod-001"}, {"_id": 0, "category": 1, "name": 1})
+    needs_reseed = existing is None or existing.get("category") != "Battery" or existing.get("name") != "48V 30Ah Lithium Battery Pack"
     if needs_reseed:
         await db.products.drop()
         await db.products.insert_many(SEED_PRODUCTS)
@@ -203,9 +203,12 @@ async def get_products(
     category: Optional[str] = Query(None),
     min_price: Optional[float] = Query(None),
     max_price: Optional[float] = Query(None),
-    featured: Optional[bool] = Query(None)
+    featured: Optional[bool] = Query(None),
+    search: Optional[str] = Query(None)
 ):
     query = {}
+    if search:
+        query["name"] = {"$regex": search, "$options": "i"}
     if category:
         query["category"] = category
     if min_price is not None or max_price is not None:

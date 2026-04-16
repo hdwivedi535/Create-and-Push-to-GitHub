@@ -80,40 +80,40 @@ class HimPrashAPITester:
         success, response = self.run_test("Get Categories", "GET", "categories", 200)
         if success and isinstance(response, list):
             print(f"   Found categories: {response}")
-            expected_categories = ["Charging", "Safety", "Mounts", "Storage", "Tech Accessories"]
-            if len(response) == 5:
-                print("✅ Correct number of categories (5)")
+            expected_categories = ["Battery", "BMS", "Charger", "Controller", "Motor", "Wiring"]
+            if len(response) == 6:
+                print("✅ Correct number of categories (6)")
                 # Check if all expected categories are present
                 missing = [cat for cat in expected_categories if cat not in response]
                 if not missing:
-                    print("✅ All expected 2W EV categories present")
+                    print("✅ All expected EV parts categories present")
                 else:
                     print(f"⚠️  Missing categories: {missing}")
             else:
-                print(f"⚠️  Expected 5 categories, got {len(response)}")
+                print(f"⚠️  Expected 6 categories, got {len(response)}")
         return success, response
 
     def test_filter_by_category(self):
         """Test filtering products by category"""
         success, response = self.run_test(
-            "Filter by Category (Safety)", 
+            "Filter by Category (Battery)", 
             "GET", 
             "products", 
             200, 
-            params={"category": "Safety"}
+            params={"category": "Battery"}
         )
         if success and isinstance(response, list):
-            print(f"   Found {len(response)} safety products")
-            # Verify all products are in Safety category
-            safety_products = [p for p in response if p.get('category') == 'Safety']
-            if len(safety_products) == len(response):
-                print("✅ All products are in Safety category")
-                if len(response) == 3:
-                    print("✅ Correct number of Safety products (3)")
+            print(f"   Found {len(response)} battery products")
+            # Verify all products are in Battery category
+            battery_products = [p for p in response if p.get('category') == 'Battery']
+            if len(battery_products) == len(response):
+                print("✅ All products are in Battery category")
+                if len(response) == 2:
+                    print("✅ Correct number of Battery products (2)")
                 else:
-                    print(f"⚠️  Expected 3 Safety products, got {len(response)}")
+                    print(f"⚠️  Expected 2 Battery products, got {len(response)}")
             else:
-                print(f"⚠️  Some products not in Safety category")
+                print(f"⚠️  Some products not in Battery category")
         return success, response
 
     def test_filter_by_price_range(self):
@@ -163,8 +163,8 @@ class HimPrashAPITester:
             print(f"   Category: {response.get('category', 'Unknown')}")
             
             # Check specific product details for prod-001
-            if response.get('name') == 'Smart Home EV Charger' and response.get('price') == 4999:
-                print("✅ prod-001 has correct name and INR price (₹4999)")
+            if response.get('name') == '48V 30Ah Lithium Battery Pack' and response.get('price') == 18999:
+                print("✅ prod-001 has correct name and INR price (₹18999)")
             else:
                 print(f"⚠️  prod-001 details incorrect - Name: {response.get('name')}, Price: {response.get('price')}")
             
@@ -178,32 +178,70 @@ class HimPrashAPITester:
 
     def test_get_nonexistent_product(self):
         """Test getting a non-existent product"""
-    def test_mounts_category(self):
-        """Test filtering products by Mounts category"""
+    def test_motor_category(self):
+        """Test filtering products by Motor category"""
         success, response = self.run_test(
-            "Filter by Category (Mounts)", 
+            "Filter by Category (Motor)", 
             "GET", 
             "products", 
             200, 
-            params={"category": "Mounts"}
+            params={"category": "Motor"}
         )
         if success and isinstance(response, list):
-            print(f"   Found {len(response)} mounts products")
-            if len(response) == 3:
-                print("✅ Correct number of Mounts products (3)")
+            print(f"   Found {len(response)} motor products")
+            if len(response) == 2:
+                print("✅ Correct number of Motor products (2)")
             else:
-                print(f"⚠️  Expected 3 Mounts products, got {len(response)}")
+                print(f"⚠️  Expected 2 Motor products, got {len(response)}")
+        return success, response
+
+    def test_search_functionality(self):
+        """Test search functionality"""
+        success, response = self.run_test(
+            "Search for 'battery'", 
+            "GET", 
+            "products", 
+            200, 
+            params={"search": "battery"}
+        )
+        if success and isinstance(response, list):
+            print(f"   Found {len(response)} products matching 'battery'")
+            if len(response) == 2:
+                print("✅ Correct number of battery search results (2)")
+            else:
+                print(f"⚠️  Expected 2 battery search results, got {len(response)}")
+            
+            # Verify all results contain 'battery' in name
+            battery_matches = [p for p in response if 'battery' in p.get('name', '').lower()]
+            if len(battery_matches) == len(response):
+                print("✅ All search results contain 'battery' in name")
+            else:
+                print(f"⚠️  Some search results don't contain 'battery' in name")
+        return success, response
+
+    def test_price_range_max(self):
+        """Test that max price is within ₹25,000 range"""
+        success, response = self.run_test("Get All Products for Price Check", "GET", "products", 200)
+        if success and isinstance(response, list):
+            max_price = max([p.get('price', 0) for p in response])
+            print(f"   Maximum product price: ₹{max_price}")
+            if max_price <= 25000:
+                print("✅ All products are within ₹25,000 price range")
+            else:
+                print(f"⚠️  Some products exceed ₹25,000 price range")
         return success, response
 
     def test_2w_ev_products(self):
-        """Test that all products are 2W EV accessories"""
-        success, response = self.run_test("Get All Products for 2W EV Check", "GET", "products", 200)
+        """Test that all products are EV parts"""
+        success, response = self.run_test("Get All Products for EV Parts Check", "GET", "products", 200)
         if success and isinstance(response, list):
-            # Check product names and descriptions for 2W EV content
+            # Check product names and descriptions for EV parts content
             car_related_terms = ['car', 'automobile', 'vehicle', 'sedan', 'suv']
-            ev_2w_terms = ['scooter', 'two-wheeler', '2w', 'electric scooter', 'ev', 'ola s1', 'ather', 'tvs iqube', 'bajaj chetak']
+            ev_parts_terms = ['battery', 'motor', 'controller', 'charger', 'bms', 'wiring', 'bldc', 'lithium', 'ev', '48v', '60v']
             
             car_products = []
+            ev_parts_count = 0
+            
             for product in response:
                 name_lower = product.get('name', '').lower()
                 desc_lower = product.get('description', '').lower()
@@ -212,11 +250,22 @@ class HimPrashAPITester:
                 # Check for car-related terms
                 if any(term in name_lower or term in desc_lower or term in compat_lower for term in car_related_terms):
                     car_products.append(product.get('name'))
+                
+                # Check for EV parts terms
+                if any(term in name_lower or term in desc_lower or term in compat_lower for term in ev_parts_terms):
+                    ev_parts_count += 1
             
             if not car_products:
-                print("✅ No car-related products found - all are 2W EV accessories")
+                print("✅ No car-related products found - all are EV parts")
             else:
                 print(f"⚠️  Found car-related products: {car_products}")
+            
+            if ev_parts_count == len(response):
+                print("✅ All products are EV parts")
+            else:
+                print(f"⚠️  Only {ev_parts_count}/{len(response)} products are clearly EV parts")
+        return success, response
+
     def test_get_nonexistent_product(self):
         """Test getting a non-existent product"""
         return self.run_test("Get Non-existent Product", "GET", "products/nonexistent", 404)
@@ -232,10 +281,12 @@ class HimPrashAPITester:
         self.test_get_all_products()
         self.test_get_categories()
         self.test_filter_by_category()
-        self.test_mounts_category()
+        self.test_motor_category()
         self.test_filter_by_price_range()
         self.test_get_featured_products()
         self.test_get_single_product()
+        self.test_search_functionality()
+        self.test_price_range_max()
         self.test_2w_ev_products()
         self.test_get_nonexistent_product()
 
