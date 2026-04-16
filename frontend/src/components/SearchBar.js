@@ -11,7 +11,7 @@ import {
 import axios from "axios";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+const API = "https://himprash-backend.onrender.com/api"
 const STORAGE_KEY = "himprash_recent_searches";
 const MAX_RECENT = 5;
 const MAX_SUGGESTIONS = 8;

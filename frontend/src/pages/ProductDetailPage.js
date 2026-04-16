@@ -5,7 +5,7 @@ import { ArrowLeft, ShoppingCart, Check, ChevronRight } from "lucide-react";
 import { Toaster, toast } from "sonner";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+const API = "https://himprash-backend.onrender.com/api";
 
 export default function ProductDetailPage() {
   const { id } = useParams();
