@@ -47,134 +47,134 @@ class ProductResponse(BaseModel):
 SEED_PRODUCTS = [
     {
         "id": "prod-001",
-        "name": "Wall Charger Pro",
-        "price": 450.00,
+        "name": "Smart Home EV Charger",
+        "price": 4999.00,
         "category": "Charging",
-        "description": "Smart home charging station with glowing LED indicator ring. Wi-Fi enabled for remote scheduling and monitoring. Delivers up to 48A for the fastest home charging experience.",
-        "compatibility": "Universal EV (Tesla, BMW, Mercedes, Hyundai)",
+        "description": "Intelligent wall-mounted charging station for your electric two-wheeler. Wi-Fi enabled with app-based scheduling and monitoring. Compatible with Ola S1, Ather 450X, TVS iQube and more. Auto cut-off and surge protection built in.",
+        "compatibility": "Ola S1 / Ather 450X / TVS iQube / Bajaj Chetak",
         "image": "https://static.prod-images.emergentagent.com/jobs/62773f05-d118-4c48-9ad3-b551fc41c456/images/eff8afc652fce44eaf6315f05bd27ef720c5ed50a7b47b63f3f8abd897d6e592.png",
         "in_stock": True,
         "featured": True
     },
     {
         "id": "prod-002",
-        "name": "Carbon Fiber Trunk Spoiler",
-        "price": 299.00,
-        "category": "Exterior",
-        "description": "Matte finish real carbon fiber spoiler. Enhances aerodynamics and provides a premium aggressive look. Easy bolt-on installation with no drilling required.",
-        "compatibility": "Tesla Model 3 / Model Y",
-        "image": "https://static.prod-images.emergentagent.com/jobs/62773f05-d118-4c48-9ad3-b551fc41c456/images/61db0a1838014a416e1e040e298b653358c46639aaa3fbf782b46da7fd8991f1.png",
+        "name": "Portable Charging Cable",
+        "price": 1299.00,
+        "category": "Charging",
+        "description": "Compact 3-meter portable charging cable with Indian 3-pin plug. Carry it anywhere for emergency charging. LED indicator shows charging status. Durable PVC jacket with IP54 splash resistance.",
+        "compatibility": "Universal 2W EV (Standard Indian Socket)",
+        "image": "https://images.unsplash.com/photo-1732347211970-530dd1a81e58?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MTJ8MHwxfHNlYXJjaHwxfHxFViUyMHR3byUyMHdoZWVsZXIlMjBjaGFyZ2VyJTIwcG9ydGFibGUlMjBjaGFyZ2luZ3xlbnwwfHx8fDE3NzYzNDkxOTV8MA&ixlib=rb-4.1.0&q=85",
         "in_stock": True,
         "featured": True
     },
     {
         "id": "prod-003",
-        "name": "Center Console Organizer",
-        "price": 35.00,
-        "category": "Interior",
-        "description": "Minimalist matte black flocked tray to organize your essentials. Seamlessly integrates with the factory console. Anti-slip surface keeps items secure during driving.",
-        "compatibility": "Tesla Model 3 / Model Y",
-        "image": "https://static.prod-images.emergentagent.com/jobs/62773f05-d118-4c48-9ad3-b551fc41c456/images/b9db011face2810059e3eccebed576341bf38c5b2c6ec0daad743ff92dac38cc.png",
+        "name": "Smart Riding Helmet",
+        "price": 3499.00,
+        "category": "Safety",
+        "description": "ISI certified full-face helmet with integrated Bluetooth for calls and music. Built-in LED tail indicators for night visibility. Anti-fog visor with UV protection. Lightweight at just 1.2 kg.",
+        "compatibility": "Universal Fit (M / L / XL)",
+        "image": "https://images.unsplash.com/photo-1684920312489-039c3bee531b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzd8MHwxfHNlYXJjaHw0fHxlbGVjdHJpYyUyMHNjb290ZXIlMjBhY2Nlc3NvcmllcyUyMGhlbG1ldCUyMG1vdW50fGVufDB8fHx8MTc3NjM0OTE5NXww&ixlib=rb-4.1.0&q=85",
         "in_stock": True,
         "featured": True
     },
     {
         "id": "prod-004",
-        "name": "Portable EV Charger",
-        "price": 349.00,
-        "category": "Charging",
-        "description": "Compact Level 2 portable charging solution. NEMA 14-50 plug with 25ft cable. Perfect for road trips and visiting locations without dedicated EV charging.",
-        "compatibility": "Universal EV (J1772 Connector)",
-        "image": "https://images.unsplash.com/photo-1672542128827-ccbb7b8b8099?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzV8MHwxfHNlYXJjaHwyfHxFViUyMGNoYXJnZXIlMjBlbGVjdHJpYyUyMHZlaGljbGUlMjBjaGFyZ2luZyUyMHN0YXRpb258ZW58MHx8fHwxNzc2MzQ4MTU5fDA&ixlib=rb-4.1.0&q=85",
+        "name": "Reflective Riding Jacket",
+        "price": 899.00,
+        "category": "Safety",
+        "description": "High-visibility reflective riding jacket for safe night commutes. 3M Scotchlite reflective strips on front, back and arms. Breathable mesh lining for Indian summers. CE-certified shoulder and elbow armor pockets.",
+        "compatibility": "Unisex (S / M / L / XL / XXL)",
+        "image": "https://images.unsplash.com/photo-1720211463641-772900a07771?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxNzV8MHwxfHNlYXJjaHwzfHxyZWZsZWN0aXZlJTIwc2FmZXR5JTIwdmVzdCUyMGphY2tldCUyMHJpZGluZyUyMG5lb258ZW58MHx8fHwxNzc2MzQ5MjgwfDA&ixlib=rb-4.1.0&q=85",
         "in_stock": True,
-        "featured": True
+        "featured": False
     },
     {
         "id": "prod-005",
-        "name": "Type 2 Charging Cable",
-        "price": 89.00,
-        "category": "Cables",
-        "description": "Premium 5-meter Type 2 to Type 2 charging cable. 32A rated with IP67 waterproof connectors. Durable outer jacket resists UV and abrasion.",
-        "compatibility": "All Type 2 EVs",
-        "image": "https://images.unsplash.com/photo-1692052626528-cb97a934a63b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzV8MHwxfHNlYXJjaHwzfHxFViUyMGNoYXJnZXIlMjBlbGVjdHJpYyUyMHZlaGljbGUlMjBjaGFyZ2luZyUyMHN0YXRpb258ZW58MHx8fHwxNzc2MzQ4MTU5fDA&ixlib=rb-4.1.0&q=85",
-        "in_stock": True,
-        "featured": False
-    },
-    {
-        "id": "prod-006",
-        "name": "All-Weather Floor Mats",
-        "price": 129.00,
-        "category": "Interior",
-        "description": "Custom-fit laser-measured floor mats with raised edges. TPE material that's eco-friendly and easy to clean. Protects your cabin from mud, snow, and spills.",
-        "compatibility": "Tesla Model 3 (2020-2025)",
-        "image": "https://images.unsplash.com/photo-1715122476474-c14d2fab50a8?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1ODR8MHwxfHNlYXJjaHwyfHxjYXIlMjBhY2Nlc3NvcmllcyUyMGludGVyaW9yJTIwbWF0cyUyMHRlY2hub2xvZ3l8ZW58MHx8fHwxNzc2MzQ4MTU5fDA&ixlib=rb-4.1.0&q=85",
-        "in_stock": True,
-        "featured": True
-    },
-    {
-        "id": "prod-007",
-        "name": "Magnetic Phone Mount",
-        "price": 49.00,
-        "category": "Mounts",
-        "description": "Ultra-strong N52 neodymium magnetic mount with 360-degree rotation. Attaches to any vent or dashboard surface. Sleek minimal design matches your EV interior.",
-        "compatibility": "Universal (All Vehicles)",
-        "image": "https://images.unsplash.com/photo-1640705049944-de916f415bb4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1ODR8MHwxfHNlYXJjaHwzfHxjYXIlMjBhY2Nlc3NvcmllcyUyMGludGVyaW9yJTIwbWF0cyUyMHRlY2hub2xvZ3l8ZW58MHx8fHwxNzc2MzQ4MTU5fDA&ixlib=rb-4.1.0&q=85",
-        "in_stock": True,
-        "featured": False
-    },
-    {
-        "id": "prod-008",
-        "name": "Dash Cam Pro 4K",
-        "price": 199.00,
-        "category": "Tech",
-        "description": "4K UHD front and rear dash camera with night vision. Built-in GPS, G-sensor, and parking mode. Loop recording with 128GB micro SD support.",
-        "compatibility": "Universal (All Vehicles)",
-        "image": "https://images.unsplash.com/photo-1614527255138-018e29ff34ee?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1ODR8MHwxfHNlYXJjaHwxfHxjYXIlMjBhY2Nlc3NvcmllcyUyMGludGVyaW9yJTIwbWF0cyUyMHRlY2hub2xvZ3l8ZW58MHx8fHwxNzc2MzQ4MTU5fDA&ixlib=rb-4.1.0&q=85",
-        "in_stock": True,
-        "featured": True
-    },
-    {
-        "id": "prod-009",
-        "name": "LED Light Bar Kit",
-        "price": 159.00,
-        "category": "Exterior",
-        "description": "Ambient underglow LED light strip kit with app control. 16 million color options with music sync mode. IP68 waterproof rating for all-weather use.",
-        "compatibility": "Universal EV",
+        "name": "LED Helmet Light Kit",
+        "price": 699.00,
+        "category": "Safety",
+        "description": "Rechargeable USB LED light strip that attaches to any helmet. 3 modes: solid, blink, and flow. 500mAh battery lasts up to 8 hours. Weatherproof IP65 rating for monsoon riding.",
+        "compatibility": "Universal (All Helmets)",
         "image": "https://images.unsplash.com/photo-1515850730971-68bc28d981d6?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNTl8MHwxfHNlYXJjaHwyfHxlbGVjdHJpYyUyMGNhciUyMGV4dGVyaW9yJTIwYWNjZXNzb3JpZXMlMjBMRUR8ZW58MHx8fHwxNzc2MzQ4MTU5fDA&ixlib=rb-4.1.0&q=85",
         "in_stock": True,
         "featured": False
     },
     {
+        "id": "prod-006",
+        "name": "Phone Mount Pro",
+        "price": 599.00,
+        "category": "Mounts",
+        "description": "CNC aluminum alloy handlebar phone mount with anti-vibration dampener. 360-degree rotation with secure clamp lock. Fits phones 4.7 to 7.2 inches. Designed to withstand Indian road vibrations.",
+        "compatibility": "Universal Handlebar (22mm-32mm)",
+        "image": "https://images.unsplash.com/photo-1583409461426-20d5d4f7a66e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjV8MHwxfHNlYXJjaHwxfHxzY29vdGVyJTIwcGhvbmUlMjBtb3VudCUyMEdQUyUyMHRyYWNrZXIlMjBnYWRnZXR8ZW58MHx8fHwxNzc2MzQ5MTk1fDA&ixlib=rb-4.1.0&q=85",
+        "in_stock": True,
+        "featured": True
+    },
+    {
+        "id": "prod-007",
+        "name": "Handlebar Mirror Set",
+        "price": 449.00,
+        "category": "Mounts",
+        "description": "Premium anti-vibration convex bar-end mirrors. CNC machined aluminum body with 360-degree adjustable ball joint. Wide-angle view reduces blind spots. Sleek minimal design.",
+        "compatibility": "Universal 2W EV (7/8 inch bars)",
+        "image": "https://images.unsplash.com/photo-1752403854633-ef9bfea057fa?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjV8MHwxfHNlYXJjaHwzfHxzY29vdGVyJTIwcGhvbmUlMjBtb3VudCUyMEdQUyUyMHRyYWNrZXIlMjBnYWRnZXR8ZW58MHx8fHwxNzc2MzQ5MTk1fDA&ixlib=rb-4.1.0&q=85",
+        "in_stock": True,
+        "featured": False
+    },
+    {
+        "id": "prod-008",
+        "name": "Waterproof Phone Pouch",
+        "price": 349.00,
+        "category": "Mounts",
+        "description": "IPX8 rated waterproof phone pouch with handlebar mount. Touchscreen compatible transparent window. Secure zip-lock closure. Internal card and key pocket. Essential for monsoon rides.",
+        "compatibility": "Universal (Up to 7 inch phones)",
+        "image": "https://images.unsplash.com/photo-1681771960707-c14a9df34f6f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHwxfHxiaWtlJTIwc2VhdCUyMHN0b3JhZ2UlMjBiYWclMjBvcmdhbml6ZXJ8ZW58MHx8fHwxNzc2MzQ5MjgwfDA&ixlib=rb-4.1.0&q=85",
+        "in_stock": True,
+        "featured": False
+    },
+    {
+        "id": "prod-009",
+        "name": "Rear Top Box 30L",
+        "price": 2499.00,
+        "category": "Storage",
+        "description": "Hard-shell 30L top box with universal mounting plate. Matte black finish with reflective strips. Holds 2 helmets or groceries securely. Quick-release lock mechanism with 2 keys included.",
+        "compatibility": "Universal 2W (Mounting plate included)",
+        "image": "https://images.unsplash.com/photo-1751924382514-13926ee09a03?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NTJ8MHwxfHNlYXJjaHwzfHxtb3RvcmN5Y2xlJTIwdG9wJTIwY2FzZSUyMHN0b3JhZ2UlMjBib3glMjB0YWlsfGVufDB8fHx8MTc3NjM0OTE5NXww&ixlib=rb-4.1.0&q=85",
+        "in_stock": True,
+        "featured": True
+    },
+    {
         "id": "prod-010",
-        "name": "Wireless Charging Pad",
-        "price": 59.00,
-        "category": "Tech",
-        "description": "Dual 15W wireless charging pad designed for EV center consoles. Anti-slip silicone surface with LED charging indicator. Qi-compatible for all modern smartphones.",
-        "compatibility": "Tesla Model 3 / Model Y / Model S",
-        "image": "https://images.unsplash.com/photo-1687455564554-4bdbb8f15437?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1ODR8MHwxfHNlYXJjaHw0fHxjYXIlMjBhY2Nlc3NvcmllcyUyMGludGVyaW9yJTIwbWF0cyUyMHRlY2hub2xvZ3l8ZW58MHx8fHwxNzc2MzQ4MTU5fDA&ixlib=rb-4.1.0&q=85",
+        "name": "Under-Seat Storage Tray",
+        "price": 799.00,
+        "category": "Storage",
+        "description": "Custom-fit under-seat organizer tray with compartments. Anti-rattle felt lining keeps items secure. Stores charger cable, toolkit, and essentials. Easy snap-fit installation.",
+        "compatibility": "Ola S1 Pro / Ather 450X",
+        "image": "https://images.unsplash.com/photo-1681771960756-820f62ea1ccc?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHwyfHxiaWtlJTIwc2VhdCUyMHN0b3JhZ2UlMjBiYWclMjBvcmdhbml6ZXJ8ZW58MHx8fHwxNzc2MzQ5MjgwfDA&ixlib=rb-4.1.0&q=85",
         "in_stock": True,
         "featured": False
     },
     {
         "id": "prod-011",
-        "name": "Roof Rack System",
-        "price": 289.00,
-        "category": "Exterior",
-        "description": "Aerodynamic aluminum roof rack with crossbars. Low wind noise design optimized for EV range preservation. Supports up to 165 lbs of cargo.",
-        "compatibility": "Tesla Model Y / Model X",
-        "image": "https://images.unsplash.com/photo-1621696306273-542abbd50d55?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNTl8MHwxfHNlYXJjaHwxfHxlbGVjdHJpYyUyMGNhciUyMGV4dGVyaW9yJTIwYWNjZXNzb3JpZXMlMjBMRUR8ZW58MHx8fHwxNzc2MzQ4MTU5fDA&ixlib=rb-4.1.0&q=85",
-        "in_stock": False,
-        "featured": False
+        "name": "GPS Tracker",
+        "price": 1999.00,
+        "category": "Tech Accessories",
+        "description": "Real-time GPS tracking device with companion mobile app. Geo-fencing alerts, trip history, and anti-theft alarm. SIM-based with 1 year free data plan. Compact design hides easily under seat.",
+        "compatibility": "Universal 2W EV (12V/48V/72V)",
+        "image": "https://images.unsplash.com/photo-1597661172655-534e51b87937?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjV8MHwxfHNlYXJjaHw0fHxzY29vdGVyJTIwcGhvbmUlMjBtb3VudCUyMEdQUyUyMHRyYWNrZXIlMjBnYWRnZXR8ZW58MHx8fHwxNzc2MzQ5MTk1fDA&ixlib=rb-4.1.0&q=85",
+        "in_stock": True,
+        "featured": True
     },
     {
         "id": "prod-012",
-        "name": "Cable Management Kit",
-        "price": 29.00,
-        "category": "Cables",
-        "description": "Wall-mounted cable organizer for your home charging setup. Includes cable hook, holder bracket, and cord wrap. Keeps your garage tidy and cable protected.",
-        "compatibility": "Universal (All EV Chargers)",
-        "image": "https://images.unsplash.com/photo-1694027667715-ea39a23e1cee?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNTl8MHwxfHNlYXJjaHw0fHxlbGVjdHJpYyUyMGNhciUyMGV4dGVyaW9yJTIwYWNjZXNzb3JpZXMlMjBMRUR8ZW58MHx8fHwxNzc2MzQ4MTU5fDA&ixlib=rb-4.1.0&q=85",
-        "in_stock": True,
+        "name": "USB Charging Hub",
+        "price": 599.00,
+        "category": "Tech Accessories",
+        "description": "Dual USB-A + USB-C fast charging hub for your scooter. QC 3.0 supported for rapid phone charging on the go. Waterproof cap protects ports from rain. Easy handlebar clamp installation.",
+        "compatibility": "Universal 2W (12V-72V Input)",
+        "image": "https://images.unsplash.com/photo-1581104678033-ce6e95d27f67?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTF8MHwxfHNlYXJjaHwzfHxVU0IlMjBjaGFyZ2VyJTIwcG9ydGFibGUlMjBwb3dlciUyMGJhbmslMjBkZXZpY2UlMjBwcm9kdWN0fGVufDB8fHx8MTc3NjM0OTIyMHww&ixlib=rb-4.1.0&q=85",
+        "in_stock": False,
         "featured": False
     }
 ]
@@ -182,12 +182,16 @@ SEED_PRODUCTS = [
 # Seed products on startup
 @app.on_event("startup")
 async def seed_products():
-    count = await db.products.count_documents({})
-    if count == 0:
+    # Check if data needs refresh by looking for a known 2W EV product
+    existing = await db.products.find_one({"id": "prod-001"}, {"_id": 0, "category": 1})
+    needs_reseed = existing is None or existing.get("category") != "Charging" or (await db.products.find_one({"id": "prod-001"}, {"_id": 0, "price": 1})).get("price") != 4999.00
+    if needs_reseed:
+        await db.products.drop()
         await db.products.insert_many(SEED_PRODUCTS)
-        logger.info(f"Seeded {len(SEED_PRODUCTS)} products")
+        logger.info(f"Reseeded {len(SEED_PRODUCTS)} products (2W EV)")
     else:
-        logger.info(f"Products collection already has {count} items")
+        count = await db.products.count_documents({})
+        logger.info(f"Products collection has {count} items (up to date)")
 
 # Routes
 @api_router.get("/")

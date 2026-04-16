@@ -8,7 +8,7 @@ import ProductDetailPage from "@/pages/ProductDetailPage";
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#0B0B0B] flex flex-col">
+    <div className="min-h-screen bg-[#0E1117] flex flex-col">
       <BrowserRouter>
         <Navbar />
         <main className="flex-1">

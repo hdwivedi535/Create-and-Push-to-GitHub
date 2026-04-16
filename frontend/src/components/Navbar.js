@@ -16,7 +16,7 @@ export default function Navbar() {
   return (
     <header
       data-testid="navbar"
-      className="backdrop-blur-xl bg-[#0B0B0B]/80 border-b border-[#1E2328] sticky top-0 z-50 transition-all"
+      className="backdrop-blur-xl bg-[#0E1117]/90 border-b border-[#1F2937] sticky top-0 z-50 transition-all"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="flex items-center justify-between h-16">
@@ -66,7 +66,7 @@ export default function Navbar() {
         {mobileOpen && (
           <nav
             data-testid="nav-mobile-links"
-            className="md:hidden pb-4 border-t border-[#1E2328] pt-4 flex flex-col gap-3"
+            className="md:hidden pb-4 border-t border-[#1F2937] pt-4 flex flex-col gap-3"
           >
             {links.map((link) => (
               <Link

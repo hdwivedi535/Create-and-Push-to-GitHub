@@ -13,6 +13,10 @@ export default function ProductDetailPage() {
   const [loading, setLoading] = useState(true);
   const [addedToCart, setAddedToCart] = useState(false);
 
+  const formatPrice = (price) => {
+    return new Intl.NumberFormat('en-IN').format(price);
+  };
+
   useEffect(() => {
     const fetchProduct = async () => {
       setLoading(true);
@@ -42,12 +46,12 @@ export default function ProductDetailPage() {
       <div className="min-h-screen">
         <div className="max-w-7xl mx-auto px-6 md:px-12 py-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div className="bg-[#111315] border border-[#1E2328] h-96 md:h-[600px] animate-pulse" />
+            <div className="bg-[#161B22] border border-[#1F2937] h-96 md:h-[600px] rounded-lg animate-pulse" />
             <div className="space-y-6">
-              <div className="h-4 w-24 bg-[#1A1D21] animate-pulse" />
-              <div className="h-10 w-3/4 bg-[#1A1D21] animate-pulse" />
-              <div className="h-8 w-32 bg-[#1A1D21] animate-pulse" />
-              <div className="h-24 w-full bg-[#1A1D21] animate-pulse" />
+              <div className="h-4 w-24 bg-[#1C2230] rounded animate-pulse" />
+              <div className="h-10 w-3/4 bg-[#1C2230] rounded animate-pulse" />
+              <div className="h-8 w-32 bg-[#1C2230] rounded animate-pulse" />
+              <div className="h-24 w-full bg-[#1C2230] rounded animate-pulse" />
             </div>
           </div>
         </div>
@@ -59,7 +63,7 @@ export default function ProductDetailPage() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <p className="text-xl text-[#A1A1AA] mb-4">Product not found</p>
+          <p className="text-xl text-[#A0A0AB] mb-4">Product not found</p>
           <Link
             to="/products"
             className="text-sm text-[#0A84FF] hover:text-[#339DFF] transition-colors"
@@ -77,34 +81,34 @@ export default function ProductDetailPage() {
         position="top-right"
         toastOptions={{
           style: {
-            background: '#111315',
-            border: '1px solid #1E2328',
-            color: '#F5F5F7',
+            background: '#161B22',
+            border: '1px solid #1F2937',
+            color: '#E8E8ED',
           },
         }}
       />
 
       {/* Breadcrumb */}
-      <div className="border-b border-[#1E2328]">
+      <div className="border-b border-[#1F2937]">
         <div className="max-w-7xl mx-auto px-6 md:px-12 py-4">
           <nav className="flex items-center gap-2 text-sm">
             <Link
               to="/"
               data-testid="breadcrumb-home"
-              className="text-[#71717A] hover:text-[#A1A1AA] transition-colors"
+              className="text-[#6B6B78] hover:text-[#A0A0AB] transition-colors"
             >
               Home
             </Link>
-            <ChevronRight className="w-3.5 h-3.5 text-[#71717A]" strokeWidth={1.5} />
+            <ChevronRight className="w-3.5 h-3.5 text-[#6B6B78]" strokeWidth={1.5} />
             <Link
               to="/products"
               data-testid="breadcrumb-products"
-              className="text-[#71717A] hover:text-[#A1A1AA] transition-colors"
+              className="text-[#6B6B78] hover:text-[#A0A0AB] transition-colors"
             >
               Products
             </Link>
-            <ChevronRight className="w-3.5 h-3.5 text-[#71717A]" strokeWidth={1.5} />
-            <span className="text-[#A1A1AA]">{product.name}</span>
+            <ChevronRight className="w-3.5 h-3.5 text-[#6B6B78]" strokeWidth={1.5} />
+            <span className="text-[#A0A0AB]">{product.name}</span>
           </nav>
         </div>
       </div>
@@ -114,7 +118,7 @@ export default function ProductDetailPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
           {/* Image - Sticky on desktop */}
           <div className="md:sticky md:top-24 md:self-start">
-            <div className="bg-[#111315] border border-[#1E2328] overflow-hidden">
+            <div className="bg-[#161B22] border border-[#1F2937] overflow-hidden rounded-lg">
               <img
                 src={product.image}
                 alt={product.name}
@@ -134,7 +138,7 @@ export default function ProductDetailPage() {
             {/* Name */}
             <h1
               data-testid="product-detail-name"
-              className="text-3xl sm:text-4xl lg:text-5xl tracking-tighter font-medium text-[#F5F5F7] mb-6"
+              className="text-3xl sm:text-4xl lg:text-5xl tracking-tighter font-medium text-[#E8E8ED] mb-6"
               style={{ fontFamily: 'Outfit, sans-serif' }}
             >
               {product.name}
@@ -143,34 +147,35 @@ export default function ProductDetailPage() {
             {/* Price */}
             <p
               data-testid="product-detail-price"
-              className="text-2xl font-semibold text-[#F5F5F7] mb-6"
+              className="text-3xl font-bold text-white mb-6"
             >
-              ${product.price.toFixed(2)}
+              <span className="text-[#00FF9D] text-xl mr-1">&#8377;</span>
+              {formatPrice(product.price)}
             </p>
 
             {/* Stock */}
             {product.in_stock ? (
               <div
                 data-testid="product-detail-stock"
-                className="inline-flex items-center gap-2 bg-[#00FF9D]/10 text-[#00FF9D] border border-[#00FF9D]/20 px-4 py-1.5 text-xs uppercase tracking-widest font-medium w-fit mb-8"
+                className="inline-flex items-center gap-2 bg-[#00FF9D]/15 text-[#00FF9D] border border-[#00FF9D]/25 px-4 py-2 text-xs uppercase tracking-widest font-bold w-fit mb-8 rounded-sm"
               >
-                <Check className="w-3.5 h-3.5" strokeWidth={1.5} />
+                <Check className="w-3.5 h-3.5" strokeWidth={2} />
                 In Stock
               </div>
             ) : (
-              <div className="inline-flex items-center gap-2 bg-red-500/10 text-red-400 border border-red-500/20 px-4 py-1.5 text-xs uppercase tracking-widest font-medium w-fit mb-8">
+              <div className="inline-flex items-center gap-2 bg-red-500/15 text-red-400 border border-red-500/25 px-4 py-2 text-xs uppercase tracking-widest font-bold w-fit mb-8 rounded-sm">
                 Out of Stock
               </div>
             )}
 
             {/* Description */}
             <div className="mb-8">
-              <h3 className="text-xs uppercase tracking-[0.15em] text-[#71717A] font-medium mb-3">
+              <h3 className="text-xs uppercase tracking-[0.15em] text-[#6B6B78] font-medium mb-3">
                 Description
               </h3>
               <p
                 data-testid="product-detail-description"
-                className="text-base leading-relaxed text-[#A1A1AA]"
+                className="text-base leading-relaxed text-[#A0A0AB]"
               >
                 {product.description}
               </p>
@@ -178,12 +183,12 @@ export default function ProductDetailPage() {
 
             {/* Compatibility */}
             <div className="mb-10">
-              <h3 className="text-xs uppercase tracking-[0.15em] text-[#71717A] font-medium mb-3">
+              <h3 className="text-xs uppercase tracking-[0.15em] text-[#6B6B78] font-medium mb-3">
                 Compatibility
               </h3>
               <div
                 data-testid="product-detail-compatibility"
-                className="inline-flex bg-[#1A1D21] border border-[#1E2328] px-4 py-2.5 text-sm text-[#F5F5F7]"
+                className="inline-flex bg-[#1C2230] border border-[#1F2937] px-4 py-2.5 text-sm text-[#E8E8ED] rounded-md"
               >
                 {product.compatibility}
               </div>
@@ -194,17 +199,17 @@ export default function ProductDetailPage() {
               data-testid="add-to-cart-btn"
               onClick={handleAddToCart}
               disabled={!product.in_stock}
-              className={`flex items-center justify-center gap-3 w-full px-8 py-4 font-medium text-base transition-all duration-200 ${
+              className={`flex items-center justify-center gap-3 w-full px-8 py-4 font-semibold text-base transition-all duration-200 rounded-md ${
                 addedToCart
-                  ? 'bg-[#00FF9D] text-[#0B0B0B]'
+                  ? 'bg-[#00FF9D] text-[#0E1117] shadow-lg shadow-[#00FF9D]/20'
                   : product.in_stock
-                    ? 'bg-[#0A84FF] text-white hover:bg-[#339DFF]'
-                    : 'bg-[#1A1D21] text-[#71717A] cursor-not-allowed'
+                    ? 'bg-[#0A84FF] text-white hover:bg-[#339DFF] shadow-lg shadow-[#0A84FF]/20 hover:shadow-[#0A84FF]/40'
+                    : 'bg-[#1C2230] text-[#6B6B78] cursor-not-allowed'
               }`}
             >
               {addedToCart ? (
                 <>
-                  <Check className="w-5 h-5" strokeWidth={1.5} />
+                  <Check className="w-5 h-5" strokeWidth={2} />
                   Added to Cart
                 </>
               ) : (
@@ -219,7 +224,7 @@ export default function ProductDetailPage() {
             <Link
               to="/products"
               data-testid="back-to-products"
-              className="flex items-center gap-2 mt-8 text-sm text-[#A1A1AA] hover:text-[#0A84FF] transition-colors group"
+              className="flex items-center gap-2 mt-8 text-sm text-[#8B8B96] hover:text-[#0A84FF] transition-colors group font-medium"
             >
               <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" strokeWidth={1.5} />
               Back to all products

@@ -6,7 +6,7 @@ import { SlidersHorizontal } from "lucide-react";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
-const MAX_PRICE = 500;
+const MAX_PRICE = 5000;
 
 export default function ProductListingPage() {
   const [products, setProducts] = useState([]);
@@ -38,7 +38,6 @@ export default function ProductListingPage() {
         if (priceRange[0] > 0) params.append("min_price", priceRange[0]);
         if (priceRange[1] < MAX_PRICE) params.append("max_price", priceRange[1]);
 
-        // If categories selected, fetch for each and merge
         if (selectedCategories.length > 0) {
           const requests = selectedCategories.map((cat) => {
             const catParams = new URLSearchParams(params);
@@ -75,20 +74,20 @@ export default function ProductListingPage() {
   return (
     <div data-testid="product-listing-page" className="min-h-screen">
       {/* Page header */}
-      <div className="border-b border-[#1E2328] bg-[#111315]">
+      <div className="border-b border-[#1F2937] bg-[#131820]">
         <div className="max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-16">
           <p className="text-xs uppercase tracking-[0.2em] font-bold text-[#0A84FF] mb-3">
             Collection
           </p>
           <h1
             data-testid="listing-heading"
-            className="text-4xl sm:text-5xl tracking-tighter font-medium text-[#F5F5F7]"
+            className="text-4xl sm:text-5xl tracking-tighter font-medium text-[#E8E8ED]"
             style={{ fontFamily: 'Outfit, sans-serif' }}
           >
             All Products
           </h1>
-          <p className="text-base text-[#A1A1AA] mt-3">
-            Browse our complete range of premium EV accessories
+          <p className="text-base text-[#8B8B96] mt-3">
+            Browse our complete range of 2W EV accessories
           </p>
         </div>
       </div>
@@ -97,7 +96,7 @@ export default function ProductListingPage() {
         {/* Mobile filter toggle */}
         <button
           data-testid="mobile-filter-toggle"
-          className="lg:hidden flex items-center gap-2 text-sm text-[#A1A1AA] hover:text-[#F5F5F7] border border-[#1E2328] px-4 py-2.5 mb-8 transition-colors"
+          className="lg:hidden flex items-center gap-2 text-sm text-[#A0A0AB] hover:text-[#E8E8ED] border border-[#1F2937] px-4 py-2.5 mb-8 transition-colors rounded-md"
           onClick={() => setMobileFilterOpen(true)}
         >
           <SlidersHorizontal className="w-4 h-4" strokeWidth={1.5} />
@@ -129,7 +128,7 @@ export default function ProductListingPage() {
           <div className="lg:col-span-3">
             {/* Results count */}
             <div className="flex items-center justify-between mb-6">
-              <p className="text-sm text-[#71717A]">
+              <p className="text-sm text-[#6B6B78]">
                 {products.length} product{products.length !== 1 ? "s" : ""}
               </p>
             </div>
@@ -139,17 +138,17 @@ export default function ProductListingPage() {
                 {[...Array(6)].map((_, i) => (
                   <div
                     key={i}
-                    className="bg-[#111315] border border-[#1E2328] h-80 animate-pulse"
+                    className="bg-[#161B22] border border-[#1F2937] h-80 rounded-lg animate-pulse"
                   />
                 ))}
               </div>
             ) : products.length === 0 ? (
               <div data-testid="no-products-message" className="text-center py-20">
-                <p className="text-lg text-[#A1A1AA] mb-2">No products found</p>
-                <p className="text-sm text-[#71717A]">Try adjusting your filters</p>
+                <p className="text-lg text-[#A0A0AB] mb-2">No products found</p>
+                <p className="text-sm text-[#6B6B78]">Try adjusting your filters</p>
                 <button
                   onClick={handleClearFilters}
-                  className="mt-4 text-sm text-[#0A84FF] hover:text-[#339DFF] transition-colors"
+                  className="mt-4 text-sm text-[#0A84FF] hover:text-[#339DFF] transition-colors font-medium"
                 >
                   Clear all filters
                 </button>
