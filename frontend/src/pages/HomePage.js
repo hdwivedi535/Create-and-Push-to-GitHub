@@ -29,10 +29,14 @@ export default function HomePage() {
     const fetchData = async () => {
       try {
         const [productsRes, catsRes] = await Promise.all([
-          axios.get(`${API}/products?featured=true`),
-          axios.get(`${API}/categories`),
-        ]);
-        setFeatured(productsRes.data);
+  axios.get(`${API}/products`),
+  axios.get(`${API}/categories`),
+]);
+
+// 👉 yahi frontend filtering hai
+const featuredProducts = productsRes.data.filter(p => p.featured);
+
+setFeatured(featuredProducts);
         setCategories(catsRes.data);
       } catch (err) {
         console.error("Failed to fetch data:", err);
