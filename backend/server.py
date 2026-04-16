@@ -26,23 +26,54 @@ class Product(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     name: str
     price: float
+    offer_price: Optional[float] = None
     category: str
     description: str
-    compatibility: str
-    image: str
+    compatibility: str = ""
+    image: str = ""
+    video_url: Optional[str] = None
     in_stock: bool = True
     featured: bool = False
+
+class ProductCreate(BaseModel):
+    name: str
+    price: float
+    offer_price: Optional[float] = None
+    category: str
+    description: str = ""
+    compatibility: str = ""
+    image: str = ""
+    video_url: Optional[str] = None
+    in_stock: bool = True
+    featured: bool = False
+
+class ProductUpdate(BaseModel):
+    name: Optional[str] = None
+    price: Optional[float] = None
+    offer_price: Optional[float] = None
+    category: Optional[str] = None
+    description: Optional[str] = None
+    compatibility: Optional[str] = None
+    image: Optional[str] = None
+    video_url: Optional[str] = None
+    in_stock: Optional[bool] = None
+    featured: Optional[bool] = None
 
 class ProductResponse(BaseModel):
     id: str
     name: str
     price: float
+    offer_price: Optional[float] = None
     category: str
     description: str
     compatibility: str
     image: str
+    video_url: Optional[str] = None
     in_stock: bool
     featured: bool
+
+class CategoryCreate(BaseModel):
+    name: str
 
 SEED_PRODUCTS = [
     {
@@ -233,8 +264,65 @@ async def get_product(product_id: str):
 
 @api_router.get("/categories")
 async def get_categories():
-    categories = await db.products.distinct("category")
-    return categories
+    # Merge categories from products + custom categories collection
+    product_cats = await db.products.distinct("category")
+    custom_cats_docs = await db.custom_categories.find({}, {"_id": 0, "name": 1}).to_list(100)
+    custom_cats = [d["name"] for d in custom_cats_docs]
+    all_cats = sorted(set(product_cats + custom_cats))
+    return all_cats
+
+# ─── Admin Endpoints ───
+
+@api_router.post("/admin/products", response_model=ProductResponse)
+async def admin_create_product(data: ProductCreate):
+    product_id = f"prod-{str(uuid.uuid4())[:8]}"
+    doc = {"id": product_id, **data.model_dump()}
+    await db.products.insert_one(doc)
+    return await db.products.find_one({"id": product_id}, {"_id": 0})
+
+@api_router.put("/admin/products/{product_id}", response_model=ProductResponse)
+async def admin_update_product(product_id: str, data: ProductUpdate):
+    updates = {k: v for k, v in data.model_dump().items() if v is not None}
+    if not updates:
+        raise HTTPException(status_code=400, detail="No fields to update")
+    # Handle explicitly setting offer_price to None (remove it)
+    raw = data.model_dump(exclude_unset=True)
+    if "offer_price" in raw and raw["offer_price"] is None:
+        updates["offer_price"] = None
+    result = await db.products.update_one({"id": product_id}, {"$set": updates})
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Product not found")
+    return await db.products.find_one({"id": product_id}, {"_id": 0})
+
+@api_router.delete("/admin/products/{product_id}")
+async def admin_delete_product(product_id: str):
+    result = await db.products.delete_one({"id": product_id})
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="Product not found")
+    return {"message": "Product deleted"}
+
+@api_router.post("/admin/products/bulk")
+async def admin_bulk_create(products: List[ProductCreate]):
+    created = []
+    for p in products:
+        product_id = f"prod-{str(uuid.uuid4())[:8]}"
+        doc = {"id": product_id, **p.model_dump()}
+        await db.products.insert_one(doc)
+        created.append(product_id)
+    return {"message": f"{len(created)} products added", "count": len(created)}
+
+@api_router.post("/admin/categories")
+async def admin_create_category(data: CategoryCreate):
+    existing = await db.custom_categories.find_one({"name": data.name})
+    if existing:
+        raise HTTPException(status_code=400, detail="Category already exists")
+    await db.custom_categories.insert_one({"name": data.name})
+    return {"message": f"Category '{data.name}' added"}
+
+@api_router.delete("/admin/categories/{category_name}")
+async def admin_delete_category(category_name: str):
+    await db.custom_categories.delete_one({"name": category_name})
+    return {"message": f"Category '{category_name}' deleted"}
 
 # Include router
 app.include_router(api_router)

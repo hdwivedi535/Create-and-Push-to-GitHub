@@ -24,6 +24,12 @@ class HimPrashAPITester:
                 response = requests.get(url, headers=headers, params=params, timeout=10)
             elif method == 'POST':
                 response = requests.post(url, json=data, headers=headers, timeout=10)
+            elif method == 'PUT':
+                response = requests.put(url, json=data, headers=headers, timeout=10)
+            elif method == 'DELETE':
+                response = requests.delete(url, headers=headers, timeout=10)
+            else:
+                raise ValueError(f"Unsupported HTTP method: {method}")
 
             success = response.status_code == expected_status
             if success:
@@ -270,25 +276,267 @@ class HimPrashAPITester:
         """Test getting a non-existent product"""
         return self.run_test("Get Non-existent Product", "GET", "products/nonexistent", 404)
 
+    def test_admin_create_product(self):
+        """Test admin product creation"""
+        test_product = {
+            "name": f"Test Admin Product {datetime.now().strftime('%H%M%S')}",
+            "price": 999.99,
+            "offer_price": 799.99,
+            "category": "Battery",
+            "description": "Test product for admin testing",
+            "compatibility": "Test compatibility",
+            "image": "https://example.com/test.jpg",
+            "video_url": "https://example.com/test.mp4",
+            "in_stock": True,
+            "featured": False
+        }
+        
+        success, response = self.run_test(
+            "Admin Create Product", 
+            "POST", 
+            "admin/products", 
+            200, 
+            data=test_product
+        )
+        
+        if success and isinstance(response, dict):
+            product_id = response.get('id')
+            print(f"   Created product ID: {product_id}")
+            
+            # Store for cleanup
+            if not hasattr(self, 'created_products'):
+                self.created_products = []
+            self.created_products.append(product_id)
+            
+            # Verify product was created with correct data
+            if response.get('name') == test_product['name']:
+                print("✅ Product created with correct name")
+            if response.get('price') == test_product['price']:
+                print("✅ Product created with correct price")
+            if response.get('offer_price') == test_product['offer_price']:
+                print("✅ Product created with correct offer price")
+                
+        return success, response
+
+    def test_admin_update_product(self):
+        """Test admin product update"""
+        # First create a product to update
+        success, created = self.test_admin_create_product()
+        if not success:
+            return False, {}
+            
+        product_id = created.get('id')
+        update_data = {
+            "name": f"Updated Admin Product {datetime.now().strftime('%H%M%S')}",
+            "price": 1199.99,
+            "offer_price": None  # Remove offer price
+        }
+        
+        success, response = self.run_test(
+            "Admin Update Product",
+            "PUT",
+            f"admin/products/{product_id}",
+            200,
+            data=update_data
+        )
+        
+        if success and isinstance(response, dict):
+            if response.get('name') == update_data['name']:
+                print("✅ Product name updated correctly")
+            if response.get('price') == update_data['price']:
+                print("✅ Product price updated correctly")
+            if response.get('offer_price') is None:
+                print("✅ Offer price removed correctly")
+                
+        return success, response
+
+    def test_admin_delete_product(self):
+        """Test admin product deletion"""
+        # First create a product to delete
+        success, created = self.test_admin_create_product()
+        if not success:
+            return False, {}
+            
+        product_id = created.get('id')
+        
+        success, response = self.run_test(
+            "Admin Delete Product",
+            "DELETE",
+            f"admin/products/{product_id}",
+            200
+        )
+        
+        if success:
+            print(f"✅ Product {product_id} deleted successfully")
+            # Remove from cleanup list
+            if hasattr(self, 'created_products') and product_id in self.created_products:
+                self.created_products.remove(product_id)
+                
+        return success, response
+
+    def test_admin_bulk_create(self):
+        """Test admin bulk product creation"""
+        bulk_products = [
+            {
+                "name": f"Bulk Product 1 {datetime.now().strftime('%H%M%S')}",
+                "price": 500.00,
+                "category": "Motor",
+                "description": "Bulk test product 1"
+            },
+            {
+                "name": f"Bulk Product 2 {datetime.now().strftime('%H%M%S')}",
+                "price": 750.00,
+                "offer_price": 650.00,
+                "category": "Controller",
+                "description": "Bulk test product 2"
+            }
+        ]
+        
+        success, response = self.run_test(
+            "Admin Bulk Create Products",
+            "POST",
+            "admin/products/bulk",
+            200,
+            data=bulk_products
+        )
+        
+        if success and isinstance(response, dict):
+            count = response.get('count', 0)
+            print(f"   Bulk created: {count} products")
+            if count == len(bulk_products):
+                print("✅ Correct number of products created")
+            else:
+                print(f"⚠️  Expected {len(bulk_products)} products, created {count}")
+                
+        return success, response
+
+    def test_admin_create_category(self):
+        """Test admin category creation"""
+        test_category = f"TestCategory{datetime.now().strftime('%H%M%S')}"
+        
+        success, response = self.run_test(
+            "Admin Create Category",
+            "POST",
+            "admin/categories",
+            200,
+            data={"name": test_category}
+        )
+        
+        if success:
+            print(f"   Created category: {test_category}")
+            # Store for cleanup
+            if not hasattr(self, 'created_categories'):
+                self.created_categories = []
+            self.created_categories.append(test_category)
+            
+        return success, response
+
+    def test_admin_delete_category(self):
+        """Test admin category deletion"""
+        # First create a category to delete
+        success, created = self.test_admin_create_category()
+        if not success:
+            return False, {}
+            
+        # Extract category name from the response message
+        test_category = None
+        if hasattr(self, 'created_categories') and self.created_categories:
+            test_category = self.created_categories[-1]
+        
+        if not test_category:
+            return False, {}
+            
+        success, response = self.run_test(
+            "Admin Delete Category",
+            "DELETE",
+            f"admin/categories/{test_category}",
+            200
+        )
+        
+        if success:
+            print(f"✅ Category {test_category} deleted successfully")
+            # Remove from cleanup list
+            if test_category in self.created_categories:
+                self.created_categories.remove(test_category)
+                
+        return success, response
+
+    def cleanup_test_data(self):
+        """Clean up any test data created during testing"""
+        print("\n🧹 Cleaning up test data...")
+        
+        # Clean up products
+        if hasattr(self, 'created_products'):
+            for product_id in self.created_products[:]:
+                try:
+                    success, _ = self.run_test(
+                        f"Cleanup Product {product_id}",
+                        "DELETE",
+                        f"admin/products/{product_id}",
+                        200
+                    )
+                    if success:
+                        self.created_products.remove(product_id)
+                        print(f"   Cleaned up product: {product_id}")
+                except:
+                    pass
+        
+        # Clean up categories
+        if hasattr(self, 'created_categories'):
+            for category in self.created_categories[:]:
+                try:
+                    success, _ = self.run_test(
+                        f"Cleanup Category {category}",
+                        "DELETE",
+                        f"admin/categories/{category}",
+                        200
+                    )
+                    if success:
+                        self.created_categories.remove(category)
+                        print(f"   Cleaned up category: {category}")
+                except:
+                    pass
+
     def run_all_tests(self):
         """Run all API tests"""
         print("🚀 Starting HimPrash API Tests")
         print(f"📍 Testing against: {self.base_url}")
         print("=" * 60)
 
-        # Test all endpoints
-        self.test_root_endpoint()
-        self.test_get_all_products()
-        self.test_get_categories()
-        self.test_filter_by_category()
-        self.test_motor_category()
-        self.test_filter_by_price_range()
-        self.test_get_featured_products()
-        self.test_get_single_product()
-        self.test_search_functionality()
-        self.test_price_range_max()
-        self.test_2w_ev_products()
-        self.test_get_nonexistent_product()
+        # Initialize cleanup lists
+        self.created_products = []
+        self.created_categories = []
+
+        try:
+            # Test basic endpoints
+            print("\n=== Basic API Tests ===")
+            self.test_root_endpoint()
+            self.test_get_all_products()
+            self.test_get_categories()
+            self.test_filter_by_category()
+            self.test_motor_category()
+            self.test_filter_by_price_range()
+            self.test_get_featured_products()
+            self.test_get_single_product()
+            self.test_search_functionality()
+            self.test_price_range_max()
+            self.test_2w_ev_products()
+            self.test_get_nonexistent_product()
+            
+            # Test admin endpoints
+            print("\n=== Admin API Tests ===")
+            self.test_admin_create_product()
+            self.test_admin_update_product()
+            self.test_admin_delete_product()
+            self.test_admin_bulk_create()
+            self.test_admin_create_category()
+            self.test_admin_delete_category()
+            
+        except Exception as e:
+            print(f"\n💥 Test execution error: {str(e)}")
+        finally:
+            # Always cleanup
+            self.cleanup_test_data()
 
         # Print summary
         print("\n" + "=" * 60)

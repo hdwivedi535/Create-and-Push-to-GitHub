@@ -149,8 +149,18 @@ export default function ProductDetailPage() {
               data-testid="product-detail-price"
               className="text-3xl font-bold text-white mb-6"
             >
-              <span className="text-[#00FF9D] text-xl mr-1">&#8377;</span>
-              {formatPrice(product.price)}
+              {product.offer_price ? (
+                <>
+                  <span className="text-[#00FF9D] text-xl mr-1">&#8377;</span>
+                  {formatPrice(product.offer_price)}
+                  <span className="text-[#6B6B78] line-through text-lg font-normal ml-3">&#8377;{formatPrice(product.price)}</span>
+                </>
+              ) : (
+                <>
+                  <span className="text-[#00FF9D] text-xl mr-1">&#8377;</span>
+                  {formatPrice(product.price)}
+                </>
+              )}
             </p>
 
             {/* Stock */}

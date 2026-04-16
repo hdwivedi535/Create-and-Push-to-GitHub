@@ -46,8 +46,18 @@ export default function ProductCard({ product, index = 0, large = false }) {
         </h3>
         <div className="mt-auto flex items-center justify-between pt-2.5 border-t border-[#1F2937]/60">
           <span className="text-lg font-bold text-white">
-            <span className="text-[#00FF9D] text-xs font-semibold mr-0.5">&#8377;</span>
-            {formatPrice(product.price)}
+            {product.offer_price ? (
+              <>
+                <span className="text-[#00FF9D] text-xs font-semibold mr-0.5">&#8377;</span>
+                {formatPrice(product.offer_price)}
+                <span className="text-[#6B6B78] line-through text-xs font-normal ml-1.5">&#8377;{formatPrice(product.price)}</span>
+              </>
+            ) : (
+              <>
+                <span className="text-[#00FF9D] text-xs font-semibold mr-0.5">&#8377;</span>
+                {formatPrice(product.price)}
+              </>
+            )}
           </span>
           <span className="flex items-center gap-1 text-xs font-medium text-[#8B8B96] group-hover:text-[#0A84FF] transition-colors duration-200">
             View
