@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Battery, Cpu, Settings, BatteryCharging, CircuitBoard, Cable } from "lucide-react";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+const API = "https://himprash-backend.onrender.com/api";
 
 const CATEGORY_ICONS = {
   Battery: Battery,
