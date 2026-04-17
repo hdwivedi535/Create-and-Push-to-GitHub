@@ -240,14 +240,22 @@ export default function AdminDashboard() {
   };
 
   const handleAddCategory = async () => {
-    if (!newCat.trim()) return;
-    try {
-      await axios.post(`${API}/admin/categories`, { name: newCat.trim() });
-      setNewCat("");
-      showToast("Category added");
-      fetchData();
-    } catch (e) { showToast(e.response?.data?.detail || "Error"); }
-  };
+  console.log("CLICKED"); // 👈 ADD THIS
+
+  if (!newCat.trim()) return;
+
+  try {
+    const res = await axios.post(`${API}/admin/categories`, { name: newCat.trim() });
+    console.log("RESPONSE:", res.data); // 👈 ADD THIS
+
+    setNewCat("");
+    showToast("Category added");
+    fetchData();
+  } catch (e) {
+    console.error("ERROR:", e.response?.data || e.message); // 👈 ADD THIS
+    showToast(e.response?.data?.detail || "Error");
+  }
+};
 
   const handleDeleteCategory = async (name) => {
     if (!window.confirm(`Delete category "${name}"?`)) return;
