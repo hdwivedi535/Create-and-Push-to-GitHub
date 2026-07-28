@@ -19,6 +19,14 @@
 *.db
 *.sqlite3
 
+# OS files
+Thumbs.db
+Desktop.ini
+
+# Local databases
+*.db
+*.sqlite3
+
 # macOS
 .AppleDouble
 .LSOverride
