@@ -9,6 +9,24 @@
 .env.*
 !.env.example
 
+# Python environment
+.envrc
+
+# VS Code
+.history/
+
+# Local databases
+*.db
+*.sqlite3
+
+# macOS
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Desktop.ini
+
 # Dependencies
 node_modules/
 /node_modules
