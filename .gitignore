@@ -107,6 +107,20 @@ agenthub/agents/youtube/db
 # Build caches
 .cache/
 
+# Local databases
+*.db
+*.sqlite3
+
+# Operating System
+Thumbs.db
+Desktop.ini
+
+# Python environment
+.envrc
+
+# Misc
+*.log
+
 memory/test_credentials.md
 
 # Mobile development
