@@ -12,6 +12,20 @@
 # Python environment
 .envrc
 
+# Local databases
+*.db
+*.sqlite3
+
+# OS files
+Thumbs.db
+Desktop.ini
+
+# Environment helpers
+.envrc
+
+# Generic logs
+*.log
+
 # VS Code
 .history/
 
